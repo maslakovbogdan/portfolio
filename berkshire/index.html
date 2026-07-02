@@ -35,7 +35,7 @@
 
     <main id="main">
       <!-- HERO -->
-      <section class="hero">
+      <section class="hero reveal">
         <p class="chip chip-blue">Официальная страница — Омаха, Небраска, с 1978 года</p>
         <h1>Всё, что нужно акционеру, — на одной странице.</h1>
         <p class="lead">
@@ -51,7 +51,7 @@
       </section>
 
       <!-- DOCUMENT STACK -->
-      <section class="desk" aria-hidden="true">
+      <section class="desk reveal" data-delay="120" aria-hidden="true">
         <div class="doc doc-back"></div>
         <div class="doc doc-main">
           <div class="doc-row doc-head">
@@ -88,9 +88,9 @@
 
       <!-- LIBRARY -->
       <section class="library" id="library">
-        <p class="kicker">Библиотека</p>
-        <h2>Пятьдесят лет прямого разговора —<br />наконец по полочкам</h2>
-        <div class="card-grid">
+        <p class="kicker reveal">Библиотека</p>
+        <h2 class="reveal" data-delay="60">Пятьдесят лет прямого разговора —<br />наконец по полочкам</h2>
+        <div class="card-grid reveal" data-delay="120">
           <a class="card" href="#">
             <p class="card-title"><span class="chip-ico ico-blue" aria-hidden="true">▤</span> Годовые и квартальные отчёты</p>
             <p class="card-body">Все годовые и квартальные отчёты одним хронологическим списком. Обновлено 2 мая 2026.</p>
@@ -131,7 +131,7 @@
       </section>
 
       <!-- QUOTE -->
-      <section class="quote">
+      <section class="quote reveal">
         <div class="stars" aria-hidden="true">★★★★★</div>
         <blockquote>
           <p>«Цена — это то, что ты платишь.<br />Ценность — то, что получаешь.»</p>
@@ -141,20 +141,20 @@
 
       <!-- NOTICES -->
       <section class="notices" id="notices">
-        <p class="kicker kicker-center">Прочтите, прежде чем инвестировать</p>
-        <h2 class="notices-title">Три вещи, которых эта компания<br />не делает никогда</h2>
+        <p class="kicker kicker-center reveal">Прочтите, прежде чем инвестировать</p>
+        <h2 class="notices-title reveal" data-delay="60">Три вещи, которых эта компания<br />не делает никогда</h2>
         <div class="notice-grid">
-          <div class="notice">
+          <div class="notice reveal">
             <p class="notice-label label-pink">Рекомендовать</p>
             <p class="notice-body"><strong>Мистер Баффет не рекомендует инвестиционные продукты.</strong> Заявления, будто он поддерживает фонд, монету или трейдинг-платформу, — мошенничество, о котором сообщается на этой странице.</p>
             <div class="notice-art art-pink" aria-hidden="true"><span>⚠</span></div>
           </div>
-          <div class="notice">
+          <div class="notice reveal" data-delay="90">
             <p class="notice-label label-blue">Отвечать лично</p>
             <p class="notice-body"><strong>Письмам здесь рады,</strong> но с таким маленьким головным офисом персональные ответы невозможны. И это — осознанный выбор.</p>
             <div class="notice-art art-blue" aria-hidden="true"><span>✉</span></div>
           </div>
-          <div class="notice">
+          <div class="notice reveal" data-delay="180">
             <p class="notice-label label-purple">Гнаться за модой</p>
             <p class="notice-body"><strong>Никаких гроус-хаков, ребрендингов и приложений.</strong> Страница выглядит одинаково со времён dial-up — потому что ценность несут письма, а не вёрстка.</p>
             <div class="notice-art art-purple" aria-hidden="true"><span>◷</span></div>
@@ -163,7 +163,7 @@
       </section>
 
       <!-- GEICO STRIP -->
-      <section class="geico">
+      <section class="geico reveal">
         <p><strong>GEICO</strong> — компания Berkshire Hathaway. Бесплатный расчёт тарифа, который может серьёзно сэкономить: 1-800-947-AUTO, круглосуточно.</p>
       </section>
     </main>
@@ -173,5 +173,26 @@
       <p>Неофициальный редизайн-концепт для портфолио · Оригинал: <a href="https://www.berkshirehathaway.com" rel="noopener" target="_blank">berkshirehathaway.com</a></p>
       <p>Дизайн и вёрстка — <a href="../">Богдан Маслаков</a>, 2026</p>
     </footer>
+    <script>
+      (function () {
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var els = document.querySelectorAll('.reveal');
+        if (reduce || !('IntersectionObserver' in window)) {
+          els.forEach(function (el) { el.classList.add('in'); });
+          return;
+        }
+        var io = new IntersectionObserver(function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              var el = entry.target;
+              var delay = parseInt(el.dataset.delay || '0', 10);
+              setTimeout(function () { el.classList.add('in'); }, delay);
+              io.unobserve(el);
+            }
+          });
+        }, { rootMargin: '-8% 0px -8% 0px', threshold: 0.05 });
+        els.forEach(function (el) { io.observe(el); });
+      })();
+    </script>
   </body>
 </html>

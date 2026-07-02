@@ -445,6 +445,27 @@ a:focus-visible {
   outline-offset: 3px;
   border-radius: 6px;
 }
+
+/* Reveal on scroll — same motion language as the TeeFusion build */
+.reveal {
+  opacity: 0;
+  transform: translateY(18px);
+}
+.reveal.in {
+  animation: reveal 0.9s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+@keyframes reveal {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   * { transition: none !important; }
+  .reveal {
+    opacity: 1;
+    transform: none;
+    animation: none;
+  }
 }
