@@ -345,6 +345,21 @@ header[data-nav] {
   border-bottom-color: var(--line);
 }
 
+/* During the theme view-transition, backdrop-filter is not rendered inside
+   the snapshots — a translucent nav then mixes old/new theme colors.
+   Make the nav opaque for the duration of the swap. */
+html.theme-swapping .nav-blur {
+  background: var(--bg-0);
+  backdrop-filter: none;
+  -webkit-backdrop-filter: none;
+  transition: none;
+}
+
+/* Inline bilingual content (long-form pages): the dictionary in i18n.js is
+   for short UI strings; rule text lives in the markup in both languages. */
+html[lang='en'] [data-lang-ru] { display: none; }
+html:not([lang='en']) [data-lang-en] { display: none; }
+
 /* Reveal on scroll */
 .reveal {
   opacity: 0;

@@ -38,6 +38,7 @@
     ) + 24;
 
     swapping = true;
+    root.classList.add('theme-swapping');
     const transition = document.startViewTransition(() => setTheme(next));
     transition.ready
       .then(() => {
@@ -58,6 +59,7 @@
       .catch(() => {});
     transition.finished.finally(() => {
       swapping = false;
+      root.classList.remove('theme-swapping');
     });
   };
 
