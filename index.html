@@ -94,6 +94,29 @@
         outline-offset: 4px;
         border-radius: 4px;
       }
+      .ba {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 12px;
+        margin-top: 18px;
+      }
+      .ba figure { margin: 0; }
+      .ba img {
+        display: block;
+        width: 100%;
+        height: auto;
+        border-radius: 8px;
+        border: 1px solid var(--line);
+      }
+      .ba figcaption {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10.5px;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text-3);
+        margin-top: 8px;
+      }
+      .project:hover .ba img { border-color: rgba(255, 255, 255, 0.25); }
       footer {
         margin-top: 56px;
         font-family: 'JetBrains Mono', monospace;
@@ -117,11 +140,31 @@
       <a class="project" href="./berkshire/">
         <h2>Berkshire Hathaway <span class="tag">редизайн-концепт · EN</span></h2>
         <p>Легендарный сайт-из-1998 компании Уоррена Баффета, переосмысленный в швейцарской манере acctual.com: бумажные документы, строгий гротеск, пастельные плашки.</p>
+        <div class="ba">
+          <figure>
+            <img src="./assets/brk-before.jpg" alt="Оригинал berkshirehathaway.com — список ссылок в Times New Roman" width="720" height="540" />
+            <figcaption>было</figcaption>
+          </figure>
+          <figure>
+            <img src="./assets/brk-after.jpg" alt="Редизайн-концепт в стилистике acctual.com" width="720" height="540" />
+            <figcaption>стало</figcaption>
+          </figure>
+        </div>
       </a>
 
       <a class="project" href="./spaceweather/">
         <h2>Spaceweather.com <span class="tag">редизайн-концепт · EN</span></h2>
         <p>Портал о космической погоде из нулевых — в «мечтательной» манере vogel.haus: градиент ночного неба, антиква, письмо редактора на бумаге и полароиды.</p>
+        <div class="ba">
+          <figure>
+            <img src="./assets/space-before.jpg" alt="Оригинал spaceweather.com — плотный портал нулевых" width="720" height="540" />
+            <figcaption>было</figcaption>
+          </figure>
+          <figure>
+            <img src="./assets/space-after.jpg" alt="Редизайн-концепт в стилистике vogel.haus" width="720" height="540" />
+            <figcaption>стало</figcaption>
+          </figure>
+        </div>
       </a>
 
       <footer>
