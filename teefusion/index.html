@@ -1,0 +1,711 @@
+<!DOCTYPE html>
+<html lang="ru" data-page="index" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title data-i18n="meta.title.index">TeeFusion — Русскоязычные серверы DDNet</title>
+    <meta name="description" data-i18n-attr="content:meta.desc.index" content="" />
+    <meta name="theme-color" content="#0a0a0a" />
+    <meta property="og:title" content="TeeFusion — Russian-language DDNet servers" />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="/assets/logo.png" />
+    <link rel="icon" href="./assets/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { line: 'rgba(255,255,255,0.08)' },
+            fontFamily: {
+              sans: ['Geist', 'Inter', 'system-ui', 'sans-serif'],
+              mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
+            },
+            maxWidth: { container: '1280px' },
+          },
+        },
+      };
+    </script>
+
+    <link rel="stylesheet" href="./styles.css" />
+
+    <!-- prevent FOUC for theme/lang -->
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('teefusion.theme');
+          if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+          var l = localStorage.getItem('teefusion.lang');
+          if (l === 'ru' || l === 'en') document.documentElement.lang = l;
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+
+  <body class="antialiased">
+    <div class="grain" aria-hidden="true"></div>
+
+    <a
+      href="#main"
+      data-i18n="a11y.skip"
+      class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-white focus:text-black focus:px-3 focus:py-1.5 focus:rounded-md"
+      >Перейти к контенту</a
+    >
+
+    <!-- NAV -->
+    <header data-nav class="nav-blur fixed top-0 inset-x-0 z-50">
+      <div class="max-w-container mx-auto px-5 sm:px-8">
+        <div class="h-16 flex items-center justify-between gap-3">
+          <a href="./" class="flex items-center gap-2.5 group shrink-0">
+            <span class="logo-mark"></span>
+            <span class="font-display text-[15px] font-semibold tracking-tight">TeeFusion</span>
+          </a>
+
+          <nav class="hidden lg:flex items-center gap-8 text-[13.5px]" style="color: var(--text-2)">
+            <a href="#modes" class="hover:text-[var(--text)] transition-colors" data-i18n="nav.modes">Режимы</a>
+            <a href="#servers" class="hover:text-[var(--text)] transition-colors" data-i18n="nav.servers">Серверы</a>
+            <a href="#community" class="hover:text-[var(--text)] transition-colors" data-i18n="nav.community">Сообщество</a>
+            <a href="./rules.html" class="hover:text-[var(--text)] transition-colors" data-i18n="nav.rules">Правила</a>
+            <a href="./donate.html" class="hover:text-[var(--text)] transition-colors" data-i18n="nav.donate">Донат</a>
+          </nav>
+
+          <div class="flex items-center gap-2">
+            <!-- Lang switch -->
+            <div data-lang-switch class="pill-switch hidden sm:inline-flex" role="group" data-i18n-attr="aria-label:a11y.lang" aria-label="Язык">
+              <button data-lang="ru" aria-pressed="true">RU</button>
+              <button data-lang="en" aria-pressed="false">EN</button>
+            </div>
+
+            <!-- Theme toggle -->
+            <button
+              data-theme-toggle
+              class="theme-toggle"
+              data-i18n-attr="aria-label:a11y.theme"
+              aria-label="Сменить тему"
+              type="button"
+            >
+              <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <circle cx="12" cy="12" r="4"/>
+                <path d="M12 3v1.5M12 19.5V21M3 12h1.5M19.5 12H21M5.6 5.6l1.05 1.05M17.35 17.35l1.05 1.05M5.6 18.4l1.05-1.05M17.35 6.65l1.05-1.05"/>
+              </svg>
+              <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.7 6.7 0 0 0 9.8 9.8z"/>
+              </svg>
+            </button>
+
+            <a href="https://discord.gg/8Fhyb2Aq7" target="_blank" rel="noopener" class="btn btn-ghost hidden md:inline-flex">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.369A19.79 19.79 0 0 0 16.558 3a14.79 14.79 0 0 0-.66 1.36 18.27 18.27 0 0 0-5.796 0A14.66 14.66 0 0 0 9.435 3 19.74 19.74 0 0 0 5.677 4.37C2.05 9.778 1.063 15.05 1.557 20.246a19.93 19.93 0 0 0 6.072 3.067c.49-.66.927-1.36 1.302-2.094a12.96 12.96 0 0 1-2.05-.985c.172-.124.34-.252.503-.385a14.18 14.18 0 0 0 12.232 0c.165.133.333.261.504.385-.655.388-1.34.717-2.052.986.376.733.812 1.434 1.302 2.094a19.92 19.92 0 0 0 6.073-3.067c.582-6.1-.992-11.323-4.126-15.878zM8.02 17.13c-1.183 0-2.157-1.085-2.157-2.42 0-1.336.954-2.42 2.157-2.42 1.21 0 2.176 1.094 2.157 2.42 0 1.335-.953 2.42-2.157 2.42zm7.974 0c-1.183 0-2.157-1.085-2.157-2.42 0-1.336.954-2.42 2.157-2.42 1.21 0 2.176 1.094 2.157 2.42 0 1.335-.947 2.42-2.157 2.42z"/></svg>
+              <span data-i18n="nav.discord">Discord</span>
+            </a>
+            <a href="#servers" class="btn btn-primary hidden sm:inline-flex">
+              <span data-i18n="nav.toServers">К серверам</span>
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            </a>
+            <button
+              data-burger
+              aria-expanded="false"
+              data-i18n-attr="aria-label:a11y.menu"
+              aria-label="Меню"
+              class="lg:hidden ml-1 w-9 h-9 grid place-items-center rounded-md border border-line"
+              style="color: var(--text-2)"
+            >
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        </div>
+
+        <nav data-drawer class="drawer lg:hidden grid gap-1 text-sm">
+          <a href="#modes" class="px-2 py-2 rounded-md hover:bg-white/5" data-i18n="nav.modes" style="color: var(--text-2)">Режимы</a>
+          <a href="#servers" class="px-2 py-2 rounded-md hover:bg-white/5" data-i18n="nav.servers" style="color: var(--text-2)">Серверы</a>
+          <a href="#community" class="px-2 py-2 rounded-md hover:bg-white/5" data-i18n="nav.community" style="color: var(--text-2)">Сообщество</a>
+          <a href="./rules.html" class="px-2 py-2 rounded-md hover:bg-white/5" data-i18n="nav.rules" style="color: var(--text-2)">Правила</a>
+          <a href="./donate.html" class="px-2 py-2 rounded-md hover:bg-white/5" data-i18n="nav.donate" style="color: var(--text-2)">Донат</a>
+          <a href="https://discord.gg/8Fhyb2Aq7" target="_blank" rel="noopener" class="px-2 py-2 rounded-md hover:bg-white/5" data-i18n="nav.discord" style="color: var(--text-2)">Discord</a>
+          <div class="sm:hidden mt-2 pt-3 border-t border-line flex items-center justify-between px-2">
+            <span class="font-mono text-[11px] tracking-widest uppercase" style="color: var(--text-3)">RU / EN</span>
+            <div data-lang-switch class="pill-switch" role="group" data-i18n-attr="aria-label:a11y.lang" aria-label="Язык">
+              <button data-lang="ru" aria-pressed="true">RU</button>
+              <button data-lang="en" aria-pressed="false">EN</button>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- HERO -->
+      <section class="relative pt-28 sm:pt-36 pb-20 sm:pb-28 overflow-hidden">
+        <div class="hero-glow"></div>
+        <div class="absolute inset-0 bg-grid opacity-60" aria-hidden="true"></div>
+
+        <div class="relative max-w-container mx-auto px-5 sm:px-8 grid lg:grid-cols-12 gap-10 lg:gap-14 items-center">
+          <div class="lg:col-span-7 reveal">
+            <div class="eyebrow mb-6">
+              <span class="tee-dot"></span>
+              <span data-i18n="hero.eyebrow">DDNET / Russian community</span>
+            </div>
+
+            <h1 class="font-display text-[42px] sm:text-6xl lg:text-[88px] leading-[0.95] tracking-tighter font-semibold">
+              <span class="block" data-i18n="hero.title.1">TeeFusion —</span>
+              <span class="block" style="color: var(--text-2)" data-i18n="hero.title.2">проект</span>
+              <span class="block" data-i18n="hero.title.3">русскоязычных</span>
+              <span class="block">
+                <span data-i18n="hero.title.4a">серверов </span><span style="color: var(--accent-hi)" data-i18n="hero.title.4b">DDNet</span>
+              </span>
+            </h1>
+
+            <p class="mt-7 max-w-[58ch] text-[15.5px] sm:text-[17px] leading-relaxed" style="color: var(--text-2)" data-i18n="hero.lead">
+              Соревновательная экосистема, где анализ ошибок стоит не меньше победы. Множество серверов с вашими любимыми модификациями ждут уже на проекте!
+            </p>
+
+            <div class="mt-9 flex flex-wrap items-center gap-3">
+              <a href="#servers" class="btn btn-primary">
+                <span data-i18n="hero.cta.servers">Список серверов</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <a href="https://discord.gg/8Fhyb2Aq7" target="_blank" rel="noopener" class="btn btn-ghost">
+                <span data-i18n="hero.cta.discord">Войти в Discord</span>
+              </a>
+            </div>
+
+            <dl class="mt-12 flex flex-wrap gap-x-10 gap-y-6">
+              <div>
+                <dt class="text-[11px] tracking-widest uppercase" style="color: var(--text-3)" data-i18n="hero.stat.modes">Режимов</dt>
+                <dd class="font-display text-3xl mt-1.5"><span data-count-target="5">5</span></dd>
+              </div>
+              <div>
+                <dt class="text-[11px] tracking-widest uppercase" style="color: var(--text-3)" data-i18n="hero.stat.servers">Серверов</dt>
+                <dd class="font-display text-3xl mt-1.5"><span data-count-target="13">13</span></dd>
+              </div>
+              <div>
+                <dt class="text-[11px] tracking-widest uppercase" style="color: var(--text-3)" data-i18n="hero.stat.region">IP / регион</dt>
+                <dd class="font-mono text-sm mt-2.5" style="color: var(--text)">46.174.48.103</dd>
+              </div>
+            </dl>
+          </div>
+
+          <!-- Right column — rotating video deck -->
+          <div class="lg:col-span-5 reveal" data-delay="120">
+            <div class="card card-inset overflow-hidden">
+              <div class="hero-deck mode-media" data-hero-deck style="aspect-ratio: 4/5;">
+                <span class="mode-tag" data-i18n="hero.deck.tag">Gameplay</span>
+                <video src="./assets/fng.mp4" data-foot="hero.foot.fng" muted playsinline preload="metadata" aria-hidden="true"></video>
+                <video src="./assets/block.mp4" data-foot="hero.foot.block" muted playsinline preload="metadata" aria-hidden="true"></video>
+                <video src="./assets/gores.mp4" data-foot="hero.foot.gores" muted playsinline preload="metadata" aria-hidden="true"></video>
+              </div>
+              <div class="px-5 py-4 flex items-center justify-between text-xs border-t border-line" style="color: var(--text-3)">
+                <span class="font-mono" data-i18n="hero.foot.fng" data-hero-foot>/ tee // freeze // grab</span>
+                <span class="flex items-center gap-2" style="color: var(--text-2)">
+                  <span class="tee-dot"></span>
+                  <span data-i18n="hero.deck.foot.right">серверы онлайн</span>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ABOUT -->
+      <section class="relative py-20 sm:py-28">
+        <div class="max-w-container mx-auto px-5 sm:px-8">
+          <div class="grid lg:grid-cols-12 gap-10 lg:gap-14">
+            <div class="lg:col-span-4 reveal">
+              <p class="eyebrow mb-5" data-i18n="about.eyebrow">01 / о проекте</p>
+              <h2 class="font-display text-3xl sm:text-4xl lg:text-5xl tracking-tighter leading-[1.05] font-semibold">
+                <span data-i18n="about.titleStrong">Игра, в которой</span><br /><span style="color: var(--text-2)" data-i18n="about.titleSoft">ценится мастерство</span>
+              </h2>
+            </div>
+
+            <div class="lg:col-span-8 grid sm:grid-cols-3 gap-3 sm:gap-4">
+              <div class="card card-inset p-6 reveal">
+                <div class="flex items-center gap-2.5" style="color: var(--text-2)">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 3l8.5 4.5v6c0 4.5-3.5 8-8.5 9.5-5-1.5-8.5-5-8.5-9.5v-6L12 3z" stroke-linejoin="round"/><path d="M9 12l2.2 2.2L15.5 10" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span class="font-mono text-[11px] tracking-widest uppercase" data-i18n="about.card.1.tag">Анти-чит</span>
+                </div>
+                <p class="mt-5 text-[15px] leading-snug font-medium" data-i18n="about.card.1.title">Без читов и эксплойтов</p>
+                <p class="mt-2 text-[13.5px] leading-relaxed" style="color: var(--text-3)" data-i18n="about.card.1.body">Соревновательное пространство строго исключает читы, баги и любое деструктивное поведение.</p>
+              </div>
+
+              <div class="card card-inset p-6 reveal" data-delay="80">
+                <div class="flex items-center gap-2.5" style="color: var(--text-2)">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M3 17l5-5 4 4 8-8" stroke-linecap="round" stroke-linejoin="round"/><path d="M14 8h6v6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                  <span class="font-mono text-[11px] tracking-widest uppercase" data-i18n="about.card.2.tag">Рейтинг</span>
+                </div>
+                <p class="mt-5 text-[15px] leading-snug font-medium" data-i18n="about.card.2.title">Прозрачный рост</p>
+                <p class="mt-2 text-[13.5px] leading-relaxed" style="color: var(--text-3)" data-i18n="about.card.2.body">Адаптивный подбор соперников и видимая траектория — от первых тактик до турниров.</p>
+              </div>
+
+              <div class="card card-inset p-6 reveal" data-delay="160">
+                <div class="flex items-center gap-2.5" style="color: var(--text-2)">
+                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="9" r="3"/><path d="M3 20c0-2.5 2.5-5 6-5s6 2.5 6 5" stroke-linecap="round"/><circle cx="17" cy="7" r="2"/><path d="M14.5 18c.3-1.7 1.7-3 3.5-3 2 0 3.5 1.5 3.5 3.5" stroke-linecap="round"/></svg>
+                  <span class="font-mono text-[11px] tracking-widest uppercase" data-i18n="about.card.3.tag">Сообщество</span>
+                </div>
+                <p class="mt-5 text-[15px] leading-snug font-medium" data-i18n="about.card.3.title">Взаимное уважение</p>
+                <p class="mt-2 text-[13.5px] leading-relaxed" style="color: var(--text-3)" data-i18n="about.card.3.body">Интернациональное комьюнити, низкий порог входа и поддержка новичков.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- MODES -->
+      <section id="modes" class="relative py-20 sm:py-28">
+        <div class="max-w-container mx-auto px-5 sm:px-8">
+          <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12 sm:mb-16">
+            <div class="reveal">
+              <p class="eyebrow mb-5" data-i18n="modes.eyebrow">02 / режимы</p>
+              <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl tracking-tighter leading-[1.02] font-semibold max-w-[18ch]" data-i18n="modes.title">
+                Три основных направления геймплея
+              </h2>
+            </div>
+            <p class="reveal max-w-[44ch] text-[15px] leading-relaxed" style="color: var(--text-2)" data-i18n="modes.lead">
+              Block, FNG и Тренировка Gores — три ключевых направления на проекте. Каждый режим — это свой ритм.
+            </p>
+          </div>
+
+          <div class="grid lg:grid-cols-12 gap-4 sm:gap-5">
+            <!-- Block -->
+            <article class="mode-card card card-inset lg:col-span-7 reveal flex flex-col">
+              <div class="mode-media">
+                <span class="mode-tag" data-i18n="modes.block.tag">01 — Block</span>
+                <video data-loop src="./assets/block.mp4" muted loop playsinline preload="metadata" aria-hidden="true"></video>
+              </div>
+              <div class="p-6 sm:p-8 flex-1 flex flex-col">
+                <div class="flex items-baseline justify-between gap-4 flex-wrap">
+                  <h3 class="font-display text-2xl sm:text-3xl tracking-tight font-semibold" data-i18n="modes.block.title">Block</h3>
+                  <span class="font-mono text-[11px] tracking-widest uppercase" style="color: var(--text-3)" data-i18n="modes.block.kicker">PvP · реакция · хук</span>
+                </div>
+                <p class="mt-4 text-[14.5px] leading-relaxed max-w-[62ch]" style="color: var(--text-2)" data-i18n="modes.block.body">
+                  PvP-режим, где задача — затолкнуть оппонента в фриз-блоки. Завязан на быстрой реакции, точном тайминге хука и нестандартных манёврах.
+                </p>
+                <div class="mt-6 flex flex-wrap gap-2 text-[12px]" style="color: var(--text-2)">
+                  <span class="px-2.5 py-1 rounded-md border border-line" style="background: color-mix(in srgb, var(--text) 2%, transparent)">Copy The Box</span>
+                  <span class="px-2.5 py-1 rounded-md border border-line" style="background: color-mix(in srgb, var(--text) 2%, transparent)">Multeasymap</span>
+                  <span class="px-2.5 py-1 rounded-md border border-line" style="background: color-mix(in srgb, var(--text) 2%, transparent)">V3ROYAL</span>
+                  <span class="px-2.5 py-1 rounded-md border border-line" style="background: color-mix(in srgb, var(--text) 2%, transparent)">Espace</span>
+                </div>
+                <a href="#servers-block" class="mt-7 inline-flex items-center gap-2 text-[13.5px] hover:opacity-100" style="color: var(--text)">
+                  <span data-i18n="modes.block.cta">Серверы Block</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <!-- FNG -->
+            <article class="mode-card card card-inset lg:col-span-5 reveal flex flex-col" data-delay="80">
+              <div class="mode-media">
+                <span class="mode-tag" data-i18n="modes.fng.tag">02 — FNG</span>
+                <video data-loop src="./assets/fng.mp4" muted loop playsinline preload="metadata" aria-hidden="true"></video>
+              </div>
+              <div class="p-6 sm:p-8 flex-1 flex flex-col">
+                <div class="flex items-baseline justify-between gap-4 flex-wrap">
+                  <h3 class="font-display text-2xl sm:text-3xl tracking-tight font-semibold" data-i18n="modes.fng.title">FNG</h3>
+                  <span class="font-mono text-[11px] tracking-widest uppercase" style="color: var(--text-3)" data-i18n="modes.fng.kicker">Команды · Соло</span>
+                </div>
+                <p class="mt-4 text-[14.5px] leading-relaxed" style="color: var(--text-2)" data-i18n="modes.fng.body">
+                  Freeze &amp; Grab. Лазером замораживаешь оппонентов и кидаешь молотком в шипы за очки; своих — размораживаешь. Динамика, физика, командная синхронизация.
+                </p>
+                <div class="mt-6 flex flex-wrap gap-2 text-[12px]" style="color: var(--text-2)">
+                  <span class="px-2.5 py-1 rounded-md border border-line" style="background: color-mix(in srgb, var(--text) 2%, transparent)">Team</span>
+                  <span class="px-2.5 py-1 rounded-md border border-line" style="background: color-mix(in srgb, var(--text) 2%, transparent)">Solo</span>
+                  <span class="px-2.5 py-1 rounded-md border border-line" style="background: color-mix(in srgb, var(--text) 2%, transparent)">TrainFNG</span>
+                  <span class="px-2.5 py-1 rounded-md border border-line" style="background: color-mix(in srgb, var(--text) 2%, transparent)">Classic</span>
+                  <span class="px-2.5 py-1 rounded-md border border-line" style="background: color-mix(in srgb, var(--text) 2%, transparent)">Balanced</span>
+                </div>
+                <a href="#servers-fng" class="mt-7 inline-flex items-center gap-2 text-[13.5px]" style="color: var(--text)">
+                  <span data-i18n="modes.fng.cta">Серверы FNG</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </article>
+
+            <!-- Gores -->
+            <article class="mode-card card card-inset lg:col-span-12 reveal flex flex-col lg:flex-row" data-delay="160">
+              <div class="mode-media lg:w-1/2 lg:aspect-auto" style="aspect-ratio:16/9;">
+                <span class="mode-tag" data-i18n="modes.gores.tag">03 — Тренировка Gores</span>
+                <video data-loop src="./assets/gores.mp4" muted loop playsinline preload="metadata" aria-hidden="true"></video>
+              </div>
+              <div class="p-6 sm:p-8 lg:w-1/2 flex flex-col justify-center">
+                <div class="flex items-baseline justify-between gap-4 flex-wrap">
+                  <h3 class="font-display text-2xl sm:text-3xl tracking-tight font-semibold" data-i18n="modes.gores.title">Тренировка Gores</h3>
+                  <span class="font-mono text-[11px] tracking-widest uppercase" style="color: var(--text-3)" data-i18n="modes.gores.kicker">Race · KoG</span>
+                </div>
+                <p class="mt-4 text-[14.5px] leading-relaxed max-w-[58ch]" style="color: var(--text-2)" data-i18n="modes.gores.body">
+                  На проекте доступен сервер «Тренировка Gores»: оттачивай хук-комбинации, тайминги и заходи на лидерборды KoG с уверенной техникой. Полигон для тех, кто хочет расти в режиме kog.
+                </p>
+                <div class="mt-6 flex flex-wrap gap-2 text-[12px]" style="color: var(--text-2)">
+                  <span class="px-2.5 py-1 rounded-md border border-line" style="background: color-mix(in srgb, var(--text) 2%, transparent)">TrainGores</span>
+                </div>
+                <a href="#servers-other" class="mt-7 inline-flex items-center gap-2 text-[13.5px]" style="color: var(--text)">
+                  <span data-i18n="modes.gores.cta">К серверам</span>
+                  <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+                </a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- SERVERS -->
+      <section id="servers" class="relative py-20 sm:py-28">
+        <div class="max-w-container mx-auto px-5 sm:px-8">
+          <div class="flex flex-col lg:flex-row lg:items-end lg:justify-between gap-6 mb-12 sm:mb-14 reveal">
+            <div>
+              <p class="eyebrow mb-5" data-i18n="servers.eyebrow">03 / серверы</p>
+              <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl tracking-tighter leading-[1.02] font-semibold" data-i18n="servers.title">Подключиться сейчас</h2>
+              <p class="mt-5 max-w-[62ch] text-[15px] leading-relaxed" style="color: var(--text-2)">
+                <span data-i18n="servers.lead">Кликни по адресу — IP скопируется в буфер. Открой клиент DDNet, перейди в браузер серверов и добавь адрес вручную, либо вставь во внутреннюю консоль через</span>
+                <span class="font-mono" style="color: var(--text)" data-i18n-html="servers.lead.cmd">connect &lt;ip&gt;</span>.
+                <span data-i18n="servers.lead.search">Также нас просто найти в поиске по названию TeeFusion.</span>
+              </p>
+            </div>
+            <div class="font-mono text-[12px] lg:text-right shrink-0" style="color: var(--text-3)">
+              <div style="color: var(--text-2)">46.174.48.103</div>
+              <div class="mt-1" data-i18n="servers.region.note">порт зависит от карты</div>
+            </div>
+          </div>
+
+          <div class="grid lg:grid-cols-2 gap-4 sm:gap-5">
+            <!-- BLOCK -->
+            <div id="servers-block" class="card card-inset reveal">
+              <div class="px-6 py-5 flex items-center justify-between border-b border-line">
+                <div>
+                  <p class="font-mono text-[11px] tracking-widest uppercase" style="color: var(--text-3)" data-i18n="servers.cat.label">Категория</p>
+                  <h3 class="font-display text-xl mt-1 tracking-tight" data-i18n="servers.cat.block">Block</h3>
+                </div>
+                <span class="text-sm" style="color: var(--text-3)" data-i18n="servers.subtitle.block">4 карты · 6 серверов</span>
+              </div>
+              <div>
+                <div class="ip-row">
+                  <p class="text-[13.5px]" style="color: var(--text)">Copy The Box</p>
+                  <span class="font-mono text-[13px]" style="color: var(--text-2)">46.174.48.103:51010</span>
+                  <button class="copy-btn" data-copy="46.174.48.103:51010">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                    <span data-copy-label data-i18n="servers.copy.idle">Копировать</span>
+                  </button>
+                </div>
+                <div class="ip-row">
+                  <p class="text-[13.5px]" style="color: var(--text)">Copy The Box</p>
+                  <span class="font-mono text-[13px]" style="color: var(--text-2)">46.174.48.103:51011</span>
+                  <button class="copy-btn" data-copy="46.174.48.103:51011">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                    <span data-copy-label data-i18n="servers.copy.idle">Копировать</span>
+                  </button>
+                </div>
+                <div class="ip-row">
+                  <p class="text-[13.5px]" style="color: var(--text)">Multeasymap</p>
+                  <span class="font-mono text-[13px]" style="color: var(--text-2)">46.174.48.103:51012</span>
+                  <button class="copy-btn" data-copy="46.174.48.103:51012">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                    <span data-copy-label data-i18n="servers.copy.idle">Копировать</span>
+                  </button>
+                </div>
+                <div class="ip-row">
+                  <p class="text-[13.5px]" style="color: var(--text)">Multeasymap</p>
+                  <span class="font-mono text-[13px]" style="color: var(--text-2)">46.174.48.103:51013</span>
+                  <button class="copy-btn" data-copy="46.174.48.103:51013">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                    <span data-copy-label data-i18n="servers.copy.idle">Копировать</span>
+                  </button>
+                </div>
+                <div class="ip-row">
+                  <p class="text-[13.5px]" style="color: var(--text)">V3ROYAL</p>
+                  <span class="font-mono text-[13px]" style="color: var(--text-2)">46.174.48.103:51014</span>
+                  <button class="copy-btn" data-copy="46.174.48.103:51014">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                    <span data-copy-label data-i18n="servers.copy.idle">Копировать</span>
+                  </button>
+                </div>
+                <div class="ip-row">
+                  <p class="text-[13.5px]" style="color: var(--text)">Espace</p>
+                  <span class="font-mono text-[13px]" style="color: var(--text-2)">46.174.48.103:51015</span>
+                  <button class="copy-btn" data-copy="46.174.48.103:51015">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                    <span data-copy-label data-i18n="servers.copy.idle">Копировать</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- FNG -->
+            <div id="servers-fng" class="card card-inset reveal" data-delay="80">
+              <div class="px-6 py-5 flex items-center justify-between border-b border-line">
+                <div>
+                  <p class="font-mono text-[11px] tracking-widest uppercase" style="color: var(--text-3)" data-i18n="servers.cat.label">Категория</p>
+                  <h3 class="font-display text-xl mt-1 tracking-tight" data-i18n="servers.cat.fng">FNG</h3>
+                </div>
+                <span class="text-sm" style="color: var(--text-3)" data-i18n="servers.subtitle.fng">3 ветки · 7 серверов</span>
+              </div>
+
+              <div class="px-6 pt-4 pb-1 font-mono text-[10.5px] tracking-widest uppercase" style="color: var(--text-3)" data-i18n="servers.section.trainfng">TrainFNG</div>
+              <div>
+                <div class="ip-row">
+                  <p class="text-[13.5px]" style="color: var(--text)">fngBalanced</p>
+                  <span class="font-mono text-[13px]" style="color: var(--text-2)">46.174.48.103:52020</span>
+                  <button class="copy-btn" data-copy="46.174.48.103:52020">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                    <span data-copy-label data-i18n="servers.copy.idle">Копировать</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="px-6 pt-4 pb-1 font-mono text-[10.5px] tracking-widest uppercase border-t border-line" style="color: var(--text-3)" data-i18n="servers.section.team">Team</div>
+              <div>
+                <div class="ip-row">
+                  <p class="text-[13.5px]" style="color: var(--text)">FNG TF</p>
+                  <span class="font-mono text-[13px]" style="color: var(--text-2)">46.174.48.103:51021</span>
+                  <button class="copy-btn" data-copy="46.174.48.103:51021">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                    <span data-copy-label data-i18n="servers.copy.idle">Копировать</span>
+                  </button>
+                </div>
+                <div class="ip-row">
+                  <p class="text-[13.5px]" style="color: var(--text)">FNG TF Classic</p>
+                  <span class="font-mono text-[13px]" style="color: var(--text-2)">46.174.48.103:51023</span>
+                  <button class="copy-btn" data-copy="46.174.48.103:51023">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                    <span data-copy-label data-i18n="servers.copy.idle">Копировать</span>
+                  </button>
+                </div>
+                <div class="ip-row">
+                  <p class="text-[13.5px]" style="color: var(--text)">fngBalanced</p>
+                  <span class="font-mono text-[13px]" style="color: var(--text-2)">46.174.48.103:51025</span>
+                  <button class="copy-btn" data-copy="46.174.48.103:51025">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                    <span data-copy-label data-i18n="servers.copy.idle">Копировать</span>
+                  </button>
+                </div>
+              </div>
+
+              <div class="px-6 pt-4 pb-1 font-mono text-[10.5px] tracking-widest uppercase border-t border-line" style="color: var(--text-3)" data-i18n="servers.section.solo">Solo</div>
+              <div>
+                <div class="ip-row">
+                  <p class="text-[13.5px]" style="color: var(--text)">FNG TF</p>
+                  <span class="font-mono text-[13px]" style="color: var(--text-2)">46.174.48.103:51022</span>
+                  <button class="copy-btn" data-copy="46.174.48.103:51022">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                    <span data-copy-label data-i18n="servers.copy.idle">Копировать</span>
+                  </button>
+                </div>
+                <div class="ip-row">
+                  <p class="text-[13.5px]" style="color: var(--text)">FNG TF Classic</p>
+                  <span class="font-mono text-[13px]" style="color: var(--text-2)">46.174.48.103:51024</span>
+                  <button class="copy-btn" data-copy="46.174.48.103:51024">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                    <span data-copy-label data-i18n="servers.copy.idle">Копировать</span>
+                  </button>
+                </div>
+                <div class="ip-row">
+                  <p class="text-[13.5px]" style="color: var(--text)">fngBalanced</p>
+                  <span class="font-mono text-[13px]" style="color: var(--text-2)">46.174.48.103:51026</span>
+                  <button class="copy-btn" data-copy="46.174.48.103:51026">
+                    <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                    <span data-copy-label data-i18n="servers.copy.idle">Копировать</span>
+                  </button>
+                </div>
+              </div>
+            </div>
+
+            <!-- OTHER -->
+            <div id="servers-other" class="card card-inset lg:col-span-2 reveal" data-delay="160">
+              <div class="px-6 py-5 flex items-center justify-between border-b border-line">
+                <div>
+                  <p class="font-mono text-[11px] tracking-widest uppercase" style="color: var(--text-3)" data-i18n="servers.cat.label">Категория</p>
+                  <h3 class="font-display text-xl mt-1 tracking-tight" data-i18n="servers.cat.other">Другое</h3>
+                </div>
+                <span class="text-sm" style="color: var(--text-3)" data-i18n="servers.subtitle.other">CTF · DM · TrainGores</span>
+              </div>
+              <div class="grid sm:grid-cols-3 sm:divide-x" style="--tw-divide-opacity:1; --tw-divide-x-reverse:0;">
+                <div class="border-b sm:border-b-0 border-line">
+                  <div class="px-6 pt-4 pb-1 font-mono text-[10.5px] tracking-widest uppercase" style="color: var(--text-3)" data-i18n="servers.section.ctf">CTF</div>
+                  <div class="ip-row !grid-cols-[1fr_auto] !pr-6">
+                    <div>
+                      <p class="text-[13.5px]" style="color: var(--text)">CTF1</p>
+                      <p class="font-mono text-[12px] mt-0.5" style="color: var(--text-3)">46.174.48.103:52031</p>
+                    </div>
+                    <button class="copy-btn" data-copy="46.174.48.103:52031">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                      <span data-copy-label data-i18n="servers.copy.idle">Копировать</span>
+                    </button>
+                  </div>
+                </div>
+                <div class="border-b sm:border-b-0 sm:border-l border-line">
+                  <div class="px-6 pt-4 pb-1 font-mono text-[10.5px] tracking-widest uppercase" style="color: var(--text-3)" data-i18n="servers.section.dm">Deathmatch</div>
+                  <div class="ip-row !grid-cols-[1fr_auto] !pr-6">
+                    <div>
+                      <p class="text-[13.5px]" style="color: var(--text)">DM1</p>
+                      <p class="font-mono text-[12px] mt-0.5" style="color: var(--text-3)">46.174.48.103:52041</p>
+                    </div>
+                    <button class="copy-btn" data-copy="46.174.48.103:52041">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                      <span data-copy-label data-i18n="servers.copy.idle">Копировать</span>
+                    </button>
+                  </div>
+                </div>
+                <div class="sm:border-l border-line">
+                  <div class="px-6 pt-4 pb-1 font-mono text-[10.5px] tracking-widest uppercase" style="color: var(--text-3)" data-i18n="servers.section.traingores">TrainGores</div>
+                  <div class="ip-row !grid-cols-[1fr_auto] !pr-6">
+                    <div>
+                      <p class="text-[13.5px]" style="color: var(--text)">Тренировка Gores</p>
+                      <p class="font-mono text-[12px] mt-0.5" style="color: var(--text-3)">46.174.48.103:53070</p>
+                    </div>
+                    <button class="copy-btn" data-copy="46.174.48.103:53070">
+                      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="9" y="9" width="11" height="11" rx="2"/><path d="M5 15V5a2 2 0 0 1 2-2h10"/></svg>
+                      <span data-copy-label data-i18n="servers.copy.idle">Копировать</span>
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="divider"></div>
+
+      <!-- COMMUNITY -->
+      <section id="community" class="relative py-20 sm:py-28">
+        <div class="max-w-container mx-auto px-5 sm:px-8">
+          <div class="grid lg:grid-cols-12 gap-10">
+            <div class="lg:col-span-4 reveal">
+              <p class="eyebrow mb-5" data-i18n="community.eyebrow">04 / сообщество</p>
+              <h2 class="font-display text-4xl sm:text-5xl lg:text-6xl tracking-tighter leading-[1.02] font-semibold" data-i18n="community.title">Будь в курсе</h2>
+              <p class="mt-5 max-w-[40ch] text-[15px] leading-relaxed" style="color: var(--text-2)" data-i18n="community.lead">
+                Анонсы, девлоги, опросы по фичам, ивенты и хайлайты — всё в наших каналах.
+              </p>
+            </div>
+
+            <div class="lg:col-span-8 grid sm:grid-cols-3 gap-3 sm:gap-4">
+              <a href="https://discord.gg/8Fhyb2Aq7" target="_blank" rel="noopener" class="card card-inset p-6 flex flex-col justify-between min-h-[180px] reveal hover:translate-y-[-1px]">
+                <div class="flex items-center gap-2.5" style="color: var(--text-2)">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M20.317 4.369A19.79 19.79 0 0 0 16.558 3a14.79 14.79 0 0 0-.66 1.36 18.27 18.27 0 0 0-5.796 0A14.66 14.66 0 0 0 9.435 3 19.74 19.74 0 0 0 5.677 4.37C2.05 9.778 1.063 15.05 1.557 20.246a19.93 19.93 0 0 0 6.072 3.067c.49-.66.927-1.36 1.302-2.094a12.96 12.96 0 0 1-2.05-.985c.172-.124.34-.252.503-.385a14.18 14.18 0 0 0 12.232 0c.165.133.333.261.504.385-.655.388-1.34.717-2.052.986.376.733.812 1.434 1.302 2.094a19.92 19.92 0 0 0 6.073-3.067c.582-6.1-.992-11.323-4.126-15.878zM8.02 17.13c-1.183 0-2.157-1.085-2.157-2.42 0-1.336.954-2.42 2.157-2.42 1.21 0 2.176 1.094 2.157 2.42 0 1.335-.953 2.42-2.157 2.42zm7.974 0c-1.183 0-2.157-1.085-2.157-2.42 0-1.336.954-2.42 2.157-2.42 1.21 0 2.176 1.094 2.157 2.42 0 1.335-.947 2.42-2.157 2.42z"/></svg>
+                  <span class="font-mono text-[11px] tracking-widest uppercase">01</span>
+                </div>
+                <div>
+                  <p class="font-display text-2xl tracking-tight font-semibold" data-i18n="community.discord.title">Discord</p>
+                  <p class="mt-1.5 text-[13.5px]" style="color: var(--text-3)" data-i18n="community.discord.body">Основная площадка комьюнити</p>
+                </div>
+              </a>
+
+              <a href="https://t.me/TeeFusionTW" target="_blank" rel="noopener" class="card card-inset p-6 flex flex-col justify-between min-h-[180px] reveal hover:translate-y-[-1px]" data-delay="80">
+                <div class="flex items-center gap-2.5" style="color: var(--text-2)">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M22 3L2.5 10.5c-1.3.5-1.3 1.4 0 1.8l5 1.5 1.9 5.7c.3.8.7 1 1.4.6l3-2.2 5.4 4c1 .6 1.6.3 1.9-.9L23.5 4.5C23.9 3.1 23.1 2.4 22 3zM18.5 7.4l-8.7 7.9-.4 4.2-2-5.9 11-6.4c.5-.3.9.1.1.2z"/></svg>
+                  <span class="font-mono text-[11px] tracking-widest uppercase">02</span>
+                </div>
+                <div>
+                  <p class="font-display text-2xl tracking-tight font-semibold" data-i18n="community.tg.title">Telegram</p>
+                  <p class="mt-1.5 text-[13.5px]" style="color: var(--text-3)" data-i18n="community.tg.body">@TeeFusionTW · новости и анонсы</p>
+                </div>
+              </a>
+
+              <a href="https://www.tiktok.com/@teefusiontw" target="_blank" rel="noopener" class="card card-inset p-6 flex flex-col justify-between min-h-[180px] reveal hover:translate-y-[-1px]" data-delay="160">
+                <div class="flex items-center gap-2.5" style="color: var(--text-2)">
+                  <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5.1 20.1a6.34 6.34 0 0 0 10.86-4.43V8.34a8.16 8.16 0 0 0 4.77 1.52V6.41a4.85 4.85 0 0 1-1.14-.27z"/></svg>
+                  <span class="font-mono text-[11px] tracking-widest uppercase">03</span>
+                </div>
+                <div>
+                  <p class="font-display text-2xl tracking-tight font-semibold" data-i18n="community.tt.title">TikTok</p>
+                  <p class="mt-1.5 text-[13.5px]" style="color: var(--text-3)" data-i18n="community.tt.body">@teefusiontw · клипы и хайлайты</p>
+                </div>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Marquee — passive ticker -->
+      <section class="relative py-10 border-y border-line overflow-hidden">
+        <div class="marquee font-display text-3xl sm:text-4xl tracking-tighter will-change-transform" style="color: color-mix(in srgb, var(--text) 80%, transparent)">
+          <div class="flex gap-14 items-center whitespace-nowrap">
+            <span>Block</span><span style="color: var(--text-3); opacity: .4">·</span>
+            <span>FNG · Team</span><span style="color: var(--text-3); opacity: .4">·</span>
+            <span>FNG · Solo</span><span style="color: var(--text-3); opacity: .4">·</span>
+            <span>TrainFNG</span><span style="color: var(--text-3); opacity: .4">·</span>
+            <span>TrainGores</span><span style="color: var(--text-3); opacity: .4">·</span>
+            <span>CTF</span><span style="color: var(--text-3); opacity: .4">·</span>
+            <span>DM</span><span style="color: var(--text-3); opacity: .4">·</span>
+            <span>Copy The Box</span><span style="color: var(--text-3); opacity: .4">·</span>
+            <span>Multeasymap</span><span style="color: var(--text-3); opacity: .4">·</span>
+            <span>V3ROYAL</span><span style="color: var(--text-3); opacity: .4">·</span>
+            <span>Espace</span><span style="color: var(--text-3); opacity: .4">·</span>
+          </div>
+          <div class="flex gap-14 items-center whitespace-nowrap" aria-hidden="true">
+            <span>Block</span><span style="color: var(--text-3); opacity: .4">·</span>
+            <span>FNG · Team</span><span style="color: var(--text-3); opacity: .4">·</span>
+            <span>FNG · Solo</span><span style="color: var(--text-3); opacity: .4">·</span>
+            <span>TrainFNG</span><span style="color: var(--text-3); opacity: .4">·</span>
+            <span>TrainGores</span><span style="color: var(--text-3); opacity: .4">·</span>
+            <span>CTF</span><span style="color: var(--text-3); opacity: .4">·</span>
+            <span>DM</span><span style="color: var(--text-3); opacity: .4">·</span>
+            <span>Copy The Box</span><span style="color: var(--text-3); opacity: .4">·</span>
+            <span>Multeasymap</span><span style="color: var(--text-3); opacity: .4">·</span>
+            <span>V3ROYAL</span><span style="color: var(--text-3); opacity: .4">·</span>
+            <span>Espace</span><span style="color: var(--text-3); opacity: .4">·</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="relative pt-20 pb-10">
+      <div class="max-w-container mx-auto px-5 sm:px-8">
+        <div class="grid md:grid-cols-12 gap-10">
+          <div class="md:col-span-5">
+            <a href="./" class="flex items-center gap-2.5">
+              <span class="logo-mark"></span>
+              <span class="font-display text-[15px] font-semibold tracking-tight">TeeFusion</span>
+            </a>
+            <p class="mt-5 max-w-[42ch] text-[14px] leading-relaxed" style="color: var(--text-3)" data-i18n="footer.about">
+              Соревновательное пространство DDNet с прозрачным рейтингом, активным комьюнити и нулевой терпимостью к читам.
+            </p>
+          </div>
+
+          <div class="md:col-span-3">
+            <p class="font-mono text-[11px] tracking-widest uppercase" style="color: var(--text-3)" data-i18n="footer.nav.h">Навигация</p>
+            <ul class="mt-4 grid gap-2 text-[14px]" style="color: var(--text-2)">
+              <li><a href="#modes" class="hover:opacity-100" data-i18n="nav.modes">Режимы</a></li>
+              <li><a href="#servers" class="hover:opacity-100" data-i18n="nav.servers">Серверы</a></li>
+              <li><a href="#community" class="hover:opacity-100" data-i18n="nav.community">Сообщество</a></li>
+              <li><a href="./rules.html" class="hover:opacity-100" data-i18n="nav.rules">Правила</a></li>
+              <li><a href="./donate.html" class="hover:opacity-100" data-i18n="nav.donate">Донат</a></li>
+            </ul>
+          </div>
+
+          <div class="md:col-span-4">
+            <p class="font-mono text-[11px] tracking-widest uppercase" style="color: var(--text-3)" data-i18n="footer.channels.h">Каналы</p>
+            <ul class="mt-4 grid gap-2 text-[14px]" style="color: var(--text-2)">
+              <li><a href="https://discord.gg/8Fhyb2Aq7" target="_blank" rel="noopener" class="hover:opacity-100">Discord</a></li>
+              <li><a href="https://t.me/TeeFusionTW" target="_blank" rel="noopener" class="hover:opacity-100">Telegram</a></li>
+              <li><a href="https://www.tiktok.com/@teefusiontw" target="_blank" rel="noopener" class="hover:opacity-100">TikTok</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="mt-14 pt-6 border-t border-line flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-[12px]" style="color: var(--text-3)">
+          <p>© <span id="year">2025</span> <span data-i18n="footer.copy">TeeFusion. Не аффилирован с DDNet.</span></p>
+          <p class="font-mono">
+            <span data-i18n="footer.dl.q">Нужен клиент?</span>
+            <a href="https://ddnet.org/downloads/" target="_blank" rel="noopener" class="underline-offset-4 hover:underline" style="color: var(--text-2)" data-i18n="footer.dl.a">скачать DDNet</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./i18n.js"></script>
+    <script src="./script.js" defer></script>
+  </body>
+</html>

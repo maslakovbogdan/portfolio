@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="ru" data-page="donate" data-theme="dark">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+    <title data-i18n="meta.title.donate">Донат — TeeFusion</title>
+    <meta name="description" content="Поддержи TeeFusion. VIP-статус, эксклюзивные кейсы и скины через Discord." />
+    <meta name="theme-color" content="#0a0a0a" />
+    <link rel="icon" href="./assets/favicon.ico" sizes="any" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon-32.png" />
+    <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon-16.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./assets/apple-touch-icon.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: { line: 'rgba(255,255,255,0.08)' },
+            fontFamily: {
+              sans: ['Geist', 'Inter', 'system-ui', 'sans-serif'],
+              mono: ['JetBrains Mono', 'ui-monospace', 'monospace'],
+            },
+            maxWidth: { container: '1280px' },
+          },
+        },
+      };
+    </script>
+    <link rel="stylesheet" href="./styles.css" />
+    <script>
+      (function () {
+        try {
+          var t = localStorage.getItem('teefusion.theme');
+          if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+          var l = localStorage.getItem('teefusion.lang');
+          if (l === 'ru' || l === 'en') document.documentElement.lang = l;
+        } catch (e) {}
+      })();
+    </script>
+  </head>
+
+  <body class="antialiased">
+    <div class="grain" aria-hidden="true"></div>
+
+    <a href="#main" data-i18n="a11y.skip" class="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[100] focus:bg-white focus:text-black focus:px-3 focus:py-1.5 focus:rounded-md">Перейти к контенту</a>
+
+    <!-- NAV -->
+    <header data-nav class="nav-blur fixed top-0 inset-x-0 z-50">
+      <div class="max-w-container mx-auto px-5 sm:px-8">
+        <div class="h-16 flex items-center justify-between gap-3">
+          <a href="./" class="flex items-center gap-2.5">
+            <span class="logo-mark"></span>
+            <span class="font-display text-[15px] font-semibold tracking-tight">TeeFusion</span>
+          </a>
+          <nav class="hidden lg:flex items-center gap-8 text-[13.5px]" style="color: var(--text-2)">
+            <a href="./#modes" class="hover:text-[var(--text)] transition-colors" data-i18n="nav.modes">Режимы</a>
+            <a href="./#servers" class="hover:text-[var(--text)] transition-colors" data-i18n="nav.servers">Серверы</a>
+            <a href="./#community" class="hover:text-[var(--text)] transition-colors" data-i18n="nav.community">Сообщество</a>
+            <a href="./rules.html" class="hover:text-[var(--text)] transition-colors" data-i18n="nav.rules">Правила</a>
+            <a href="./donate.html" style="color: var(--text)" data-i18n="nav.donate">Донат</a>
+          </nav>
+          <div class="flex items-center gap-2">
+            <div data-lang-switch class="pill-switch hidden sm:inline-flex" role="group" aria-label="Язык">
+              <button data-lang="ru" aria-pressed="true">RU</button>
+              <button data-lang="en" aria-pressed="false">EN</button>
+            </div>
+            <button data-theme-toggle class="theme-toggle" aria-label="Сменить тему" type="button">
+              <svg class="icon-sun" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="4"/><path d="M12 3v1.5M12 19.5V21M3 12h1.5M19.5 12H21M5.6 5.6l1.05 1.05M17.35 17.35l1.05 1.05M5.6 18.4l1.05-1.05M17.35 6.65l1.05-1.05"/></svg>
+              <svg class="icon-moon" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.8A8.5 8.5 0 1 1 11.2 3a6.7 6.7 0 0 0 9.8 9.8z"/></svg>
+            </button>
+            <a href="https://discord.gg/8Fhyb2Aq7" target="_blank" rel="noopener" class="btn btn-ghost hidden md:inline-flex" data-i18n="nav.discord">Discord</a>
+            <a href="./" class="btn btn-primary hidden sm:inline-flex" data-i18n="nav.home">На главную</a>
+            <button data-burger aria-expanded="false" aria-label="Меню" class="lg:hidden ml-1 w-9 h-9 grid place-items-center rounded-md border border-line" style="color: var(--text-2)">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 7h16M4 12h16M4 17h16" stroke-linecap="round"/></svg>
+            </button>
+          </div>
+        </div>
+        <nav data-drawer class="drawer lg:hidden grid gap-1 text-sm">
+          <a href="./" class="px-2 py-2 rounded-md hover:bg-white/5" data-i18n="nav.home" style="color: var(--text-2)">На главную</a>
+          <a href="./#modes" class="px-2 py-2 rounded-md hover:bg-white/5" data-i18n="nav.modes" style="color: var(--text-2)">Режимы</a>
+          <a href="./#servers" class="px-2 py-2 rounded-md hover:bg-white/5" data-i18n="nav.servers" style="color: var(--text-2)">Серверы</a>
+          <a href="./#community" class="px-2 py-2 rounded-md hover:bg-white/5" data-i18n="nav.community" style="color: var(--text-2)">Сообщество</a>
+          <a href="./rules.html" class="px-2 py-2 rounded-md hover:bg-white/5" data-i18n="nav.rules" style="color: var(--text-2)">Правила</a>
+          <a href="./donate.html" class="px-2 py-2 rounded-md" data-i18n="nav.donate" style="color: var(--text)">Донат</a>
+          <div class="sm:hidden mt-2 pt-3 border-t border-line flex items-center justify-between px-2">
+            <span class="font-mono text-[11px] tracking-widest uppercase" style="color: var(--text-3)">RU / EN</span>
+            <div data-lang-switch class="pill-switch" role="group" data-i18n-attr="aria-label:a11y.lang" aria-label="Язык">
+              <button data-lang="ru" aria-pressed="true">RU</button>
+              <button data-lang="en" aria-pressed="false">EN</button>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <main id="main">
+      <!-- HERO -->
+      <section class="relative pt-28 sm:pt-36 pb-12 sm:pb-16 overflow-hidden">
+        <div class="absolute inset-0 bg-grid opacity-50" aria-hidden="true"></div>
+        <div class="hero-glow"></div>
+        <div class="relative max-w-container mx-auto px-5 sm:px-8 grid lg:grid-cols-12 gap-10 items-end">
+          <div class="lg:col-span-8">
+            <p class="eyebrow mb-5" data-i18n="donate.eyebrow">/ донат · ranked</p>
+            <h1 class="font-display text-5xl sm:text-6xl lg:text-7xl tracking-tighter leading-[1.0] font-semibold">
+              <span data-i18n="donate.title.1">Поддержка</span><br /><span style="color: var(--text-2)" data-i18n="donate.title.2">TeeFusion</span>
+            </h1>
+            <p class="mt-6 max-w-[68ch] text-[15.5px] leading-relaxed" style="color: var(--text-2)" data-i18n="donate.lead">
+              Плюхи. Статусы. Политика, отличная от Pay-To-Win. Хочешь поддержать TeeFusion и получить взамен уникальные штуки? Мы поможем тебе выделиться.
+            </p>
+          </div>
+          <div class="lg:col-span-4">
+            <div class="card card-inset p-5">
+              <p class="font-mono text-[10.5px] tracking-widest uppercase" style="color: var(--text-3)" data-i18n="donate.benefits.h">Что даёт донат на ранкеде</p>
+              <ul class="mt-3 space-y-1.5 text-[14px]" style="color: var(--text-2)">
+                <li class="flex items-baseline gap-2">
+                  <span class="tee-dot mt-1.5"></span>
+                  <span data-i18n="donate.benefits.1">Доступы к новинкам</span>
+                </li>
+                <li class="flex items-baseline gap-2">
+                  <span class="tee-dot mt-1.5"></span>
+                  <span data-i18n="donate.benefits.2">Эксклюзивные визуалы</span>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <div class="max-w-container mx-auto px-5 sm:px-8"><div class="divider"></div></div>
+
+      <!-- TECH DETAILS -->
+      <section class="py-10 sm:py-14">
+        <div class="max-w-container mx-auto px-5 sm:px-8 grid md:grid-cols-12 gap-8">
+          <div class="md:col-span-4">
+            <p class="eyebrow" data-i18n="donate.tech.h">Технические детали</p>
+          </div>
+          <div class="md:col-span-8 grid sm:grid-cols-2 gap-3">
+            <div class="card p-5">
+              <p class="font-mono text-[10.5px] tracking-widest uppercase" style="color: var(--text-3)">// 01</p>
+              <p class="mt-2.5 text-[14px] leading-relaxed" style="color: var(--text-2)" data-i18n="donate.tech.1">
+                Привязка статуса и предметов осуществляется к игровому аккаунту
+              </p>
+            </div>
+            <div class="card p-5">
+              <p class="font-mono text-[10.5px] tracking-widest uppercase" style="color: var(--text-3)">// 02</p>
+              <p class="mt-2.5 text-[14px] leading-relaxed" style="color: var(--text-2)" data-i18n="donate.tech.2">
+                Статус присваивается на всех TeeFusion-серверах с модом <span class="font-mono" style="color: var(--text)">0XF</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- VIP -->
+      <section class="py-12 sm:py-20">
+        <div class="max-w-container mx-auto px-5 sm:px-8">
+          <div class="tier-card featured grid lg:grid-cols-12 gap-0 overflow-hidden">
+            <div class="lg:col-span-7 p-8 sm:p-10 border-b lg:border-b-0 lg:border-r border-line">
+              <div class="flex items-center gap-3 flex-wrap">
+                <span class="tier-pill" data-i18n="donate.vip.label">статус</span>
+                <span class="font-mono text-[11px]" style="color: var(--accent-hi)" data-i18n="donate.vip.featured">86% продлевают после первого месяца</span>
+              </div>
+              <h2 class="mt-5 font-display text-5xl sm:text-6xl tracking-tighter leading-none font-semibold" data-i18n="donate.vip.title">VIP</h2>
+              <p class="mt-3 text-[15.5px]" style="color: var(--text-2)" data-i18n="donate.vip.subtitle">Премиум-статус с эффектами и прибавками</p>
+
+              <p class="mt-8 font-mono text-[10.5px] tracking-widest uppercase" style="color: var(--text-3)" data-i18n="donate.vip.benefits.h">Преимущества</p>
+              <ul class="mt-4 dot-list space-y-2.5 text-[14.5px]" style="color: var(--text-2)">
+                <li data-i18n="donate.vip.b.1">Уникальный VIP-эффект</li>
+                <li data-i18n="donate.vip.b.2">Бесплатные визуальные эффекты: Rainbow, Heart Gun, Lovely</li>
+                <li data-i18n="donate.vip.b.3">Стоимость игрового магазина снижена на 25%</li>
+                <li data-i18n="donate.vip.b.4">Выбор префикса: VIP / MVP / TOP / MLG / PRO</li>
+                <li data-i18n="donate.vip.b.5">Роль @x V.I.P (требуется привязка аккаунта)</li>
+              </ul>
+            </div>
+            <div class="lg:col-span-5 p-8 sm:p-10" style="background: color-mix(in srgb, var(--accent) 6%, transparent)">
+              <p class="font-mono text-[10.5px] tracking-widest uppercase" style="color: var(--text-3)" data-i18n="donate.vip.prices.h">Цены</p>
+              <dl class="mt-3">
+                <div class="price-row">
+                  <dt class="text-[14.5px]"><span data-i18n="donate.vip.p.1.t">1 неделя</span> <span style="color: var(--text-3)">/ 7d</span></dt>
+                  <dd class="font-display text-2xl tracking-tight">59 ₽</dd>
+                </div>
+                <div class="price-row">
+                  <dt class="text-[14.5px]"><span data-i18n="donate.vip.p.2.t">1 месяц</span> <span style="color: var(--text-3)">/ 30d</span></dt>
+                  <dd class="font-display text-2xl tracking-tight">199 ₽</dd>
+                </div>
+                <div class="price-row">
+                  <dt class="text-[14.5px]"><span data-i18n="donate.vip.p.3.t">3 месяца</span> <span style="color: var(--text-3)">/ 90d</span></dt>
+                  <dd class="font-display text-2xl tracking-tight">549 ₽</dd>
+                </div>
+                <div class="price-row">
+                  <dt class="text-[14.5px]"><span data-i18n="donate.vip.p.4.t">6 месяцев</span> <span style="color: var(--text-3)">/ 180d</span></dt>
+                  <dd class="font-display text-2xl tracking-tight">1 189 ₽</dd>
+                </div>
+                <div class="price-row">
+                  <dt class="text-[14.5px]"><span data-i18n="donate.vip.p.5.t">1 год</span> <span style="color: var(--text-3)">/ 365d</span></dt>
+                  <dd class="font-display text-2xl tracking-tight">1 815 ₽</dd>
+                </div>
+              </dl>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- CASES -->
+      <section class="pb-12 sm:pb-20">
+        <div class="max-w-container mx-auto px-5 sm:px-8 grid lg:grid-cols-2 gap-5">
+          <!-- EXCLUSIVE -->
+          <article class="tier-card p-7 sm:p-9 flex flex-col">
+            <div class="flex items-center justify-between gap-3 flex-wrap">
+              <span class="tier-pill" data-i18n="donate.case.exclusive.label">кейс · лимитированный</span>
+              <span class="font-mono text-[11px]" style="color: var(--text-3)" data-i18n="donate.case.exclusive.subtitle">Только лимитированные эффекты</span>
+            </div>
+            <h3 class="mt-4 font-display text-3xl sm:text-4xl tracking-tighter font-semibold" data-i18n="donate.case.exclusive.title">Exclusive Case</h3>
+
+            <p class="mt-7 font-mono text-[10.5px] tracking-widest uppercase" style="color: var(--text-3)" data-i18n="donate.case.contents.h">Содержимое</p>
+            <ul class="mt-3 flex-1">
+              <li class="case-item">
+                <span class="case-tag">DEATH_VORTEX</span>
+                <span style="color: var(--text-2)">Смерть «Вихрь» <span class="font-mono" style="color: var(--text-3)">/ 1 мес.</span></span>
+                <span class="stars">★★★★★</span>
+              </li>
+              <li class="case-item">
+                <span class="case-tag">DEATH_VORTEX</span>
+                <span style="color: var(--text-2)">Смерть «Вихрь» <span class="font-mono" style="color: var(--text-3)">/ 14 дн.</span></span>
+                <span class="stars">★★★★<span class="dim">★</span></span>
+              </li>
+              <li class="case-item">
+                <span class="case-tag">DEATH_VORTEX</span>
+                <span style="color: var(--text-2)">Смерть «Вихрь» <span class="font-mono" style="color: var(--text-3)">/ 7 дн.</span></span>
+                <span class="stars">★★★<span class="dim">★★</span></span>
+              </li>
+              <li class="case-item">
+                <span class="case-tag">INVINCIBLE_EFFECT</span>
+                <span style="color: var(--text-2)">Эффект «Неуязвимость» <span class="font-mono" style="color: var(--text-3)">/ 1 мес.</span></span>
+                <span class="stars">★★★★★</span>
+              </li>
+              <li class="case-item">
+                <span class="case-tag">INVINCIBLE_EFFECT</span>
+                <span style="color: var(--text-2)">Эффект «Неуязвимость» <span class="font-mono" style="color: var(--text-3)">/ 14 дн.</span></span>
+                <span class="stars">★★★★<span class="dim">★</span></span>
+              </li>
+              <li class="case-item">
+                <span class="case-tag">INVINCIBLE_EFFECT</span>
+                <span style="color: var(--text-2)">Эффект «Неуязвимость» <span class="font-mono" style="color: var(--text-3)">/ 7 дн.</span></span>
+                <span class="stars">★★★<span class="dim">★★</span></span>
+              </li>
+              <li class="case-item">
+                <span class="case-tag">STAR_GUN</span>
+                <span style="color: var(--text-2)">Эффект выстрела «Звёздный» <span class="font-mono" style="color: var(--text-3)">/ 1 мес.</span></span>
+                <span class="stars">★★★★★</span>
+              </li>
+              <li class="case-item">
+                <span class="case-tag">STAR_GUN</span>
+                <span style="color: var(--text-2)">Эффект выстрела «Звёздный» <span class="font-mono" style="color: var(--text-3)">/ 14 дн.</span></span>
+                <span class="stars">★★★★<span class="dim">★</span></span>
+              </li>
+              <li class="case-item">
+                <span class="case-tag">STAR_GUN</span>
+                <span style="color: var(--text-2)">Эффект выстрела «Звёздный» <span class="font-mono" style="color: var(--text-3)">/ 7 дн.</span></span>
+                <span class="stars">★★★<span class="dim">★★</span></span>
+              </li>
+              <li class="case-item">
+                <span class="case-tag">LIGHTNING_SPAWN_EFFECT</span>
+                <span style="color: var(--text-2)">Респавн «Молния» <span class="font-mono" style="color: var(--text-3)">/ 1 мес.</span></span>
+                <span class="stars">★★★★★</span>
+              </li>
+              <li class="case-item">
+                <span class="case-tag">LIGHTNING_SPAWN_EFFECT</span>
+                <span style="color: var(--text-2)">Респавн «Молния» <span class="font-mono" style="color: var(--text-3)">/ 14 дн.</span></span>
+                <span class="stars">★★★★<span class="dim">★</span></span>
+              </li>
+              <li class="case-item">
+                <span class="case-tag">LIGHTNING_SPAWN_EFFECT</span>
+                <span style="color: var(--text-2)">Респавн «Молния» <span class="font-mono" style="color: var(--text-3)">/ 7 дн.</span></span>
+                <span class="stars">★★★<span class="dim">★★</span></span>
+              </li>
+            </ul>
+
+            <div class="mt-7 grid sm:grid-cols-2 gap-5">
+              <div>
+                <p class="font-mono text-[10.5px] tracking-widest uppercase" style="color: var(--text-3)" data-i18n="donate.case.rarity.h">Редкость</p>
+                <p class="mt-2 text-[13px]" style="color: var(--text-2)"><span class="stars">★★★</span> — обычная · <span class="stars">★★★★★</span> — высокая</p>
+              </div>
+              <div>
+                <p class="font-mono text-[10.5px] tracking-widest uppercase" style="color: var(--text-3)" data-i18n="donate.case.prices.h">Цена за единицу</p>
+                <dl class="mt-2 grid grid-cols-2 gap-x-3 gap-y-1 text-[13.5px] font-mono">
+                  <dt style="color: var(--text-3)">1 шт.</dt><dd>32 ₽</dd>
+                  <dt style="color: var(--text-3)">5 шт.</dt><dd>145 ₽</dd>
+                  <dt style="color: var(--text-3)">10 шт.</dt><dd>270 ₽</dd>
+                  <dt style="color: var(--text-3)">20 шт.</dt><dd>480 ₽</dd>
+                </dl>
+              </div>
+            </div>
+          </article>
+
+          <!-- TREASURE -->
+          <article class="tier-card p-7 sm:p-9 flex flex-col">
+            <div class="flex items-center justify-between gap-3 flex-wrap">
+              <span class="tier-pill" data-i18n="donate.case.treasure.label">кейс · базовый</span>
+              <span class="font-mono text-[11px]" style="color: var(--text-3)" data-i18n="donate.case.treasure.subtitle">Скины, эффекты и статусы</span>
+            </div>
+            <h3 class="mt-4 font-display text-3xl sm:text-4xl tracking-tighter font-semibold" data-i18n="donate.case.treasure.title">Treasure Case</h3>
+
+            <p class="mt-7 font-mono text-[10.5px] tracking-widest uppercase" style="color: var(--text-3)" data-i18n="donate.case.contents.h">Содержимое</p>
+            <ul class="mt-3 flex-1">
+              <li class="case-item">
+                <span class="case-tag">HAT_NINJA</span>
+                <span style="color: var(--text-2)">Шляпа «Ниндзя» <span class="font-mono" style="color: var(--text-3)">/ 1 мес.</span></span>
+                <span class="stars">★★★<span class="dim">★★</span></span>
+              </li>
+              <li class="case-item">
+                <span class="case-tag">HAT_NINJA</span>
+                <span style="color: var(--text-2)">Шляпа «Ниндзя» <span class="font-mono" style="color: var(--text-3)">/ 7 дн.</span></span>
+                <span class="stars">★<span class="dim">★★★★</span></span>
+              </li>
+              <li class="case-item">
+                <span class="case-tag">LASER_GUN</span>
+                <span style="color: var(--text-2)">Эффект выстрела «Лазерный» <span class="font-mono" style="color: var(--text-3)">/ 1 мес.</span></span>
+                <span class="stars">★★★★<span class="dim">★</span></span>
+              </li>
+              <li class="case-item">
+                <span class="case-tag">LASER_GUN</span>
+                <span style="color: var(--text-2)">Эффект выстрела «Лазерный» <span class="font-mono" style="color: var(--text-3)">/ 7 дн.</span></span>
+                <span class="stars">★★<span class="dim">★★★</span></span>
+              </li>
+              <li class="case-item">
+                <span class="case-tag">SPOOKY_GUN</span>
+                <span style="color: var(--text-2)">Эффект выстрела «Призрачный» <span class="font-mono" style="color: var(--text-3)">/ 1 мес.</span></span>
+                <span class="stars">★★★★<span class="dim">★</span></span>
+              </li>
+              <li class="case-item">
+                <span class="case-tag">SPOOKY_GUN</span>
+                <span style="color: var(--text-2)">Эффект выстрела «Призрачный» <span class="font-mono" style="color: var(--text-3)">/ 7 дн.</span></span>
+                <span class="stars">★★★<span class="dim">★★</span></span>
+              </li>
+              <li class="case-item">
+                <span class="case-tag">TRAIL_STAR</span>
+                <span style="color: var(--text-2)">Эффект следа «Звёздный» <span class="font-mono" style="color: var(--text-3)">/ 1 мес.</span></span>
+                <span class="stars">★★★<span class="dim">★★</span></span>
+              </li>
+              <li class="case-item">
+                <span class="case-tag">TRAIL_STAR</span>
+                <span style="color: var(--text-2)">Эффект следа «Звёздный» <span class="font-mono" style="color: var(--text-3)">/ 7 дн.</span></span>
+                <span class="stars">★★<span class="dim">★★★</span></span>
+              </li>
+              <li class="case-item">
+                <span class="case-tag">DEATH_STARS_CIRCLE</span>
+                <span style="color: var(--text-2)">Смерть «Звёздный круг» <span class="font-mono" style="color: var(--text-3)">/ 1 мес.</span></span>
+                <span class="stars">★★★★<span class="dim">★</span></span>
+              </li>
+              <li class="case-item">
+                <span class="case-tag">DEATH_STARS_CIRCLE</span>
+                <span style="color: var(--text-2)">Смерть «Звёздный круг» <span class="font-mono" style="color: var(--text-3)">/ 7 дн.</span></span>
+                <span class="stars">★★<span class="dim">★★★</span></span>
+              </li>
+              <li class="case-item">
+                <span class="case-tag">YIN_YANG_SPAWN_EFFECT</span>
+                <span style="color: var(--text-2)">Респавн «Инь-Ян» <span class="font-mono" style="color: var(--text-3)">/ 1 мес.</span></span>
+                <span class="stars">★★★★<span class="dim">★</span></span>
+              </li>
+              <li class="case-item">
+                <span class="case-tag">YIN_YANG_SPAWN_EFFECT</span>
+                <span style="color: var(--text-2)">Респавн «Инь-Ян» <span class="font-mono" style="color: var(--text-3)">/ 7 дн.</span></span>
+                <span class="stars">★★★<span class="dim">★★</span></span>
+              </li>
+              <li class="case-item">
+                <span class="case-tag">RAINBOW_NIGHT_BLUE</span>
+                <span style="color: var(--text-2)">Скин Rainbow «Ночнfz» <span class="font-mono" style="color: var(--text-3)">/ 14 дн.</span></span>
+                <span class="stars">★★★★<span class="dim">★</span></span>
+              </li>
+              <li class="case-item">
+                <span class="case-tag">RAINBOW_BW</span>
+                <span style="color: var(--text-2)">Скин Rainbow «Чёрно-белый» <span class="font-mono" style="color: var(--text-3)">/ 14 дн.</span></span>
+                <span class="stars">★★★<span class="dim">★★</span></span>
+              </li>
+              <li class="case-item">
+                <span class="case-tag">VIP</span>
+                <span style="color: var(--text-2)">Статус VIP <span class="font-mono" style="color: var(--text-3)">/ 3 мес.</span></span>
+                <span class="stars">★★★★★</span>
+              </li>
+              <li class="case-item">
+                <span class="case-tag">VIP</span>
+                <span style="color: var(--text-2)">Статус VIP <span class="font-mono" style="color: var(--text-3)">/ 1 мес.</span></span>
+                <span class="stars">★★★★★</span>
+              </li>
+              <li class="case-item">
+                <span class="case-tag">VIP</span>
+                <span style="color: var(--text-2)">Статус VIP <span class="font-mono" style="color: var(--text-3)">/ 7 дн.</span></span>
+                <span class="stars">★★★★<span class="dim">★</span></span>
+              </li>
+              <li class="case-item">
+                <span class="case-tag">VIP</span>
+                <span style="color: var(--text-2)">Статус VIP <span class="font-mono" style="color: var(--text-3)">/ 3 дн.</span></span>
+                <span class="stars">★★★<span class="dim">★★</span></span>
+              </li>
+              <li class="case-item">
+                <span class="case-tag">VIP</span>
+                <span style="color: var(--text-2)">Статус VIP <span class="font-mono" style="color: var(--text-3)">/ 1 день</span></span>
+                <span class="stars">★★<span class="dim">★★★</span></span>
+              </li>
+            </ul>
+
+            <div class="mt-7 grid sm:grid-cols-2 gap-5">
+              <div>
+                <p class="font-mono text-[10.5px] tracking-widest uppercase" style="color: var(--text-3)" data-i18n="donate.case.rarity.h">Редкость</p>
+                <p class="mt-2 text-[13px]" style="color: var(--text-2)"><span class="stars">★</span> — низкая · <span class="stars">★★★★★</span> — высокая</p>
+              </div>
+              <div>
+                <p class="font-mono text-[10.5px] tracking-widest uppercase" style="color: var(--text-3)" data-i18n="donate.case.prices.h">Цена за единицу</p>
+                <dl class="mt-2 grid grid-cols-2 gap-x-3 gap-y-1 text-[13.5px] font-mono">
+                  <dt style="color: var(--text-3)">1 шт.</dt><dd>30 ₽</dd>
+                  <dt style="color: var(--text-3)">5 шт.</dt><dd>140 ₽</dd>
+                  <dt style="color: var(--text-3)">10 шт.</dt><dd>270 ₽</dd>
+                  <dt style="color: var(--text-3)">20 шт.</dt><dd>480 ₽</dd>
+                </dl>
+              </div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- CTA / contact -->
+      <section class="pb-20">
+        <div class="max-w-container mx-auto px-5 sm:px-8">
+          <div class="card card-inset p-8 sm:p-12 grid lg:grid-cols-12 gap-8 items-center">
+            <div class="lg:col-span-7">
+              <p class="eyebrow" style="color: var(--text-3)">
+                <span data-i18n="donate.status.label">STATUS</span>
+                <span style="color: var(--accent-hi); margin-left: 8px;" data-i18n="donate.status.value">Активен</span>
+              </p>
+              <h2 class="mt-4 font-display text-4xl sm:text-5xl tracking-tighter leading-[1.05] font-semibold" data-i18n="donate.cta.h">Как купить</h2>
+              <p class="mt-4 max-w-[58ch] text-[15px] leading-relaxed" style="color: var(--text-2)" data-i18n="donate.cta.body">
+                Покупка идёт через Discord. Напиши Байкеру, он оформит статус или кейс на твой игровой аккаунт.
+              </p>
+              <p class="mt-3 text-[13px]" style="color: var(--text-3)" data-i18n="donate.disclaimer">
+                Все цены указаны в рублях (₽). Возврат средств — только в случае технической ошибки на стороне TeeFusion.
+              </p>
+            </div>
+            <div class="lg:col-span-5 flex flex-col gap-3">
+              <div class="card p-4 flex items-center justify-between">
+                <div class="flex items-center gap-3">
+                  <span class="w-9 h-9 grid place-items-center rounded-md" style="background: color-mix(in srgb, var(--accent) 15%, transparent); color: var(--accent-hi)">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.317 4.369A19.79 19.79 0 0 0 16.558 3a14.79 14.79 0 0 0-.66 1.36 18.27 18.27 0 0 0-5.796 0A14.66 14.66 0 0 0 9.435 3 19.74 19.74 0 0 0 5.677 4.37C2.05 9.778 1.063 15.05 1.557 20.246a19.93 19.93 0 0 0 6.072 3.067c.49-.66.927-1.36 1.302-2.094a12.96 12.96 0 0 1-2.05-.985c.172-.124.34-.252.503-.385a14.18 14.18 0 0 0 12.232 0c.165.133.333.261.504.385-.655.388-1.34.717-2.052.986.376.733.812 1.434 1.302 2.094a19.92 19.92 0 0 0 6.073-3.067c.582-6.1-.992-11.323-4.126-15.878zM8.02 17.13c-1.183 0-2.157-1.085-2.157-2.42 0-1.336.954-2.42 2.157-2.42 1.21 0 2.176 1.094 2.157 2.42 0 1.335-.953 2.42-2.157 2.42zm7.974 0c-1.183 0-2.157-1.085-2.157-2.42 0-1.336.954-2.42 2.157-2.42 1.21 0 2.176 1.094 2.157 2.42 0 1.335-.947 2.42-2.157 2.42z"/></svg>
+                  </span>
+                  <div>
+                    <p class="font-mono text-[10.5px] tracking-widest uppercase" style="color: var(--text-3)">Discord</p>
+                    <p class="font-mono text-[14px]" style="color: var(--text)" data-i18n="donate.cta.contact">Discord: @bicker_2504</p>
+                  </div>
+                </div>
+              </div>
+              <a href="https://discord.gg/8Fhyb2Aq7" target="_blank" rel="noopener" class="btn btn-accent justify-center w-full">
+                <span data-i18n="donate.cta.btn">Открыть Discord</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M13 5l7 7-7 7" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </a>
+              <p class="text-[12.5px] mt-1" style="color: var(--text-3)">
+                <span data-i18n="donate.note.1">Донат развивается вместе с игровым контентом. Актуальный список возможностей — в Discord-канале #donate.</span>
+                <br />
+                <span data-i18n="donate.note.2">Ваша поддержка помогает нам развивать TeeFusion и добавлять новые фичи.</span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="relative pt-12 pb-10 border-t border-line">
+      <div class="max-w-container mx-auto px-5 sm:px-8">
+        <div class="grid md:grid-cols-12 gap-10">
+          <div class="md:col-span-5">
+            <a href="./" class="flex items-center gap-2.5">
+              <span class="logo-mark"></span>
+              <span class="font-display text-[15px] font-semibold tracking-tight">TeeFusion</span>
+            </a>
+            <p class="mt-5 max-w-[42ch] text-[14px] leading-relaxed" style="color: var(--text-3)" data-i18n="footer.about">
+              Соревновательное пространство DDNet с прозрачным рейтингом, активным комьюнити и нулевой терпимостью к читам.
+            </p>
+          </div>
+          <div class="md:col-span-3">
+            <p class="font-mono text-[11px] tracking-widest uppercase" style="color: var(--text-3)" data-i18n="footer.nav.h">Навигация</p>
+            <ul class="mt-4 grid gap-2 text-[14px]" style="color: var(--text-2)">
+              <li><a href="./#modes" data-i18n="nav.modes">Режимы</a></li>
+              <li><a href="./#servers" data-i18n="nav.servers">Серверы</a></li>
+              <li><a href="./#community" data-i18n="nav.community">Сообщество</a></li>
+              <li><a href="./rules.html" data-i18n="nav.rules">Правила</a></li>
+              <li><a href="./donate.html" style="color: var(--text)" data-i18n="nav.donate">Донат</a></li>
+            </ul>
+          </div>
+          <div class="md:col-span-4">
+            <p class="font-mono text-[11px] tracking-widest uppercase" style="color: var(--text-3)" data-i18n="footer.channels.h">Каналы</p>
+            <ul class="mt-4 grid gap-2 text-[14px]" style="color: var(--text-2)">
+              <li><a href="https://discord.gg/8Fhyb2Aq7" target="_blank" rel="noopener">Discord</a></li>
+              <li><a href="https://t.me/TeeFusionTW" target="_blank" rel="noopener">Telegram</a></li>
+              <li><a href="https://www.tiktok.com/@teefusiontw" target="_blank" rel="noopener">TikTok</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="mt-12 pt-6 border-t border-line flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 text-[12px]" style="color: var(--text-3)">
+          <p>© <span id="year">2025</span> <span data-i18n="footer.copy">TeeFusion. Не аффилирован с DDNet.</span></p>
+          <p class="font-mono">
+            <span data-i18n="footer.dl.q">Нужен клиент?</span>
+            <a href="https://ddnet.org/downloads/" target="_blank" rel="noopener" class="underline-offset-4 hover:underline" style="color: var(--text-2)" data-i18n="footer.dl.a">скачать DDNet</a>
+          </p>
+        </div>
+      </div>
+    </footer>
+
+    <script src="./i18n.js"></script>
+    <script src="./script.js" defer></script>
+  </body>
+</html>

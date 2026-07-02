@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Богдан Маслаков — веб-дизайн и вёрстка</title>
+    <meta name="description" content="Портфолио: лендинги, адаптивная вёрстка, интерактивные элементы." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --bg: #0a0a0a;
+        --text: #f4f4f5;
+        --text-2: #a1a1aa;
+        --text-3: #71717a;
+        --line: rgba(255, 255, 255, 0.1);
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: 'Geist', 'Inter', system-ui, sans-serif;
+        letter-spacing: -0.011em;
+        -webkit-font-smoothing: antialiased;
+      }
+      main {
+        max-width: 640px;
+        margin: 0 auto;
+        padding: 96px 24px 64px;
+      }
+      .eyebrow {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 11px;
+        letter-spacing: 0.14em;
+        text-transform: uppercase;
+        color: var(--text-3);
+        margin: 0 0 20px;
+      }
+      h1 {
+        font-size: clamp(28px, 6vw, 40px);
+        letter-spacing: -0.03em;
+        line-height: 1.1;
+        font-weight: 600;
+        margin: 0 0 12px;
+      }
+      .lead {
+        color: var(--text-2);
+        font-size: 15.5px;
+        line-height: 1.6;
+        margin: 0 0 56px;
+        max-width: 46ch;
+      }
+      .project {
+        display: block;
+        padding: 22px 0;
+        border-top: 1px solid var(--line);
+        text-decoration: none;
+        color: inherit;
+      }
+      .project:last-of-type { border-bottom: 1px solid var(--line); }
+      .project h2 {
+        font-size: 18px;
+        font-weight: 500;
+        letter-spacing: -0.02em;
+        margin: 0 0 6px;
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 16px;
+      }
+      .project h2 .tag {
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 10.5px;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--text-3);
+        font-weight: 400;
+        white-space: nowrap;
+      }
+      .project p {
+        margin: 0;
+        color: var(--text-2);
+        font-size: 14px;
+        line-height: 1.55;
+      }
+      .project:hover h2 { text-decoration: underline; text-underline-offset: 4px; }
+      .project:focus-visible {
+        outline: 2px solid var(--text);
+        outline-offset: 4px;
+        border-radius: 4px;
+      }
+      footer {
+        margin-top: 56px;
+        font-family: 'JetBrains Mono', monospace;
+        font-size: 12px;
+        color: var(--text-3);
+      }
+      footer a { color: var(--text-2); }
+    </style>
+  </head>
+  <body>
+    <main>
+      <p class="eyebrow">портфолио / web</p>
+      <h1>Богдан Маслаков</h1>
+      <p class="lead">Лендинги и адаптивная вёрстка: тёмные/светлые темы, двуязычные интерфейсы, интерактивные элементы.</p>
+
+      <a class="project" href="./teefusion/">
+        <h2>TeeFusion <span class="tag">лендинг · RU/EN · 3 страницы</span></h2>
+        <p>Сайт русскоязычного сообщества серверов DDNet: рейтинговые режимы, список серверов с копированием IP, тёмная и светлая темы.</p>
+      </a>
+
+      <footer>
+        <a href="mailto:maslakovbogdanal@gmail.com">maslakovbogdanal@gmail.com</a>
+      </footer>
+    </main>
+  </body>
+</html>
