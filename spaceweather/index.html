@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Spaceweather.com — redesign concept</title>
+    <meta name="description" content="Unofficial redesign concept of spaceweather.com. News and information about the Sun–Earth environment." />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Caveat:wght@500&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <a href="#main" class="skip">Skip to content</a>
+
+    <div class="sky">
+      <div class="stars" aria-hidden="true"></div>
+
+      <header class="nav">
+        <a class="brand" href="#">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+            <circle cx="12" cy="12" r="5" fill="#ffd9a0"/>
+            <g stroke="#ffd9a0" stroke-width="1.6" stroke-linecap="round">
+              <path d="M12 1.5v3M12 19.5v3M1.5 12h3M19.5 12h3M4.6 4.6l2.1 2.1M17.3 17.3l2.1 2.1M4.6 19.4l2.1-2.1M17.3 6.7l2.1-2.1"/>
+            </g>
+          </svg>
+          <span>spaceweather<i>.com</i></span>
+        </a>
+        <nav class="nav-links">
+          <a href="#conditions">Conditions</a>
+          <a href="#stories">This week</a>
+          <a href="#alerts">Alerts</a>
+          <a href="#letter">About</a>
+        </nav>
+        <a href="#alerts" class="pill pill-ghost nav-cta">Subscribe</a>
+      </header>
+
+      <main id="main">
+        <!-- HERO -->
+        <section class="hero">
+          <svg class="constellation" viewBox="0 0 260 150" aria-hidden="true">
+            <g stroke="rgba(255,255,255,.35)" stroke-width="1">
+              <path d="M20 120 L70 84 L118 96 L164 52 L212 66 L240 26" fill="none"/>
+              <path d="M118 96 L96 40 L164 52" fill="none"/>
+            </g>
+            <g fill="#fff">
+              <circle cx="20" cy="120" r="2.4"/><circle cx="70" cy="84" r="3.2"/>
+              <circle cx="118" cy="96" r="2.2"/><circle cx="96" cy="40" r="2.8"/>
+              <circle cx="164" cy="52" r="3.4"/><circle cx="212" cy="66" r="2.2"/>
+              <circle cx="240" cy="26" r="2.8"/>
+            </g>
+          </svg>
+
+          <a class="badge" href="#stories">
+            <span class="badge-dot" aria-hidden="true"></span>
+            G2 geomagnetic storm predicted — July 3
+            <span aria-hidden="true">›</span>
+          </a>
+
+          <h1>The sky is full<br />of surprises.</h1>
+
+          <p class="lead">
+            News and information about the Sun–Earth environment. Solar flares, auroras,
+            noctilucent clouds and meteor showers — observed daily, explained plainly.
+          </p>
+
+          <div class="hero-cta">
+            <a class="pill pill-solid" href="#alerts">Get aurora alerts</a>
+            <a class="pill pill-ghost" href="#conditions">Today's conditions</a>
+          </div>
+
+          <svg class="chevron" width="26" height="14" viewBox="0 0 26 14" fill="none" aria-hidden="true">
+            <path d="M2 2l11 10L24 2" stroke="rgba(255,255,255,.7)" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/>
+          </svg>
+        </section>
+
+        <!-- LETTER -->
+        <section class="letter-zone" id="letter">
+          <figure class="polaroid polaroid-left" aria-hidden="true">
+            <div class="polaroid-img aurora-img"></div>
+            <figcaption>aurora over Tromsø</figcaption>
+          </figure>
+
+          <article class="letter">
+            <h2>An AI-free zone.</h2>
+            <p>
+              Spaceweather.com is written by a real human being — and it has been for
+              thirty years. Every forecast on this page comes from a person who walked
+              outside, looked up, and checked the data twice.
+            </p>
+            <p>
+              We report the sky for awe, not engagement. No feeds designed to keep you
+              scrolling, no headlines louder than the aurora itself. When something is
+              about to happen over your head, we tell you — plainly, and in time to see it.
+            </p>
+            <p>
+              If you find a mistake here, rest assured: it was made by a real human being.
+            </p>
+            <p class="signature" aria-label="Signed, Dr. Tony Phillips">Tony Phillips</p>
+            <p class="signature-title">Dr. Tony Phillips, editor since 1997</p>
+          </article>
+
+          <figure class="polaroid polaroid-right" aria-hidden="true">
+            <div class="polaroid-img noctilucent-img"></div>
+            <figcaption>noctilucent clouds, July 1</figcaption>
+          </figure>
+        </section>
+
+        <!-- CONDITIONS -->
+        <section class="conditions" id="conditions">
+          <p class="eyebrow">Current conditions · 02 Jul 2026</p>
+          <h2 class="section-title">Right now, above you</h2>
+          <div class="stat-grid">
+            <div class="stat">
+              <p class="stat-label">Solar wind</p>
+              <p class="stat-value">420 <span>km/s</span></p>
+              <p class="stat-note">density 8.1 protons/cm³</p>
+            </div>
+            <div class="stat">
+              <p class="stat-label">Sunspot number</p>
+              <p class="stat-value">146</p>
+              <p class="stat-note">two 'beta-gamma-delta' groups</p>
+            </div>
+            <div class="stat">
+              <p class="stat-label">X-ray solar flares</p>
+              <p class="stat-value">C8</p>
+              <p class="stat-note">6-hr max, sunspot 8954</p>
+            </div>
+            <div class="stat">
+              <p class="stat-label">Planetary K-index</p>
+              <p class="stat-value">1.0 <span>quiet</span></p>
+              <p class="stat-note">24-hr max Kp 3.0</p>
+            </div>
+          </div>
+        </section>
+
+        <!-- STORIES -->
+        <section class="stories" id="stories">
+          <p class="eyebrow">This week in space</p>
+          <h2 class="section-title">Three reasons to look up</h2>
+          <div class="story-grid">
+            <article class="story">
+              <div class="story-art art-storm" aria-hidden="true"></div>
+              <h3>A storm is coming — the good kind</h3>
+              <p>
+                NOAA analysts say a G2-class geomagnetic storm is possible on July 3rd,
+                when a CME from the June 30th X-flare reaches Earth. Aurora visibility
+                could stretch to mid-latitudes in the dark hours around midnight.
+              </p>
+            </article>
+            <article class="story">
+              <div class="story-art art-noctilucent" aria-hidden="true"></div>
+              <h3>Night-shining clouds over Europe</h3>
+              <p>
+                Sky watchers report natural noctilucent clouds — summertime plumes of
+                water vapor that crystallize around meteor dust at the edge of space,
+                glowing electric blue long after sunset.
+              </p>
+            </article>
+            <article class="story">
+              <div class="story-art art-rocket" aria-hidden="true"></div>
+              <h3>A rocket drew on the sky</h3>
+              <p>
+                A Falcon 9 out of Vandenberg left an icy exhaust spiral visible 500 miles
+                away, and delivered 24 more Starlink satellites — bringing the total in
+                orbit to 10,746.
+              </p>
+            </article>
+          </div>
+        </section>
+
+        <!-- ALERTS -->
+        <section class="alerts" id="alerts">
+          <div class="alert-card">
+            <div class="alert-copy">
+              <p class="eyebrow">Backyard astronomy alerts</p>
+              <h2>We will tell you when to look.</h2>
+              <ul>
+                <li>Real-time SMS when auroras, planetary conjunctions or meteor showers begin</li>
+                <li>Space-station flybys visible from your backyard, timed to the minute</li>
+                <li>Written and checked by humans — never auto-generated</li>
+              </ul>
+              <div class="alert-cta">
+                <a class="pill pill-solid" href="#">Get alerts — $49.95/year</a>
+                <p class="alert-offer">introductory offer: first year 50% off</p>
+              </div>
+            </div>
+            <blockquote class="alert-quote">
+              <p>“Peaks of my week now happen at 2 a.m., in the yard, in my pajamas.”</p>
+              <footer>— a subscriber since 2019</footer>
+            </blockquote>
+          </div>
+        </section>
+      </main>
+
+      <footer class="footer">
+        <p>Unofficial redesign concept for portfolio purposes · Original: <a href="https://spaceweather.com" rel="noopener" target="_blank">spaceweather.com</a></p>
+        <p>Design &amp; build — <a href="../">Bogdan Maslakov</a>, 2026</p>
+      </footer>
+    </div>
+  </body>
+</html>
