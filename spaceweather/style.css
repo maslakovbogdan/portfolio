@@ -190,7 +190,7 @@ body {
 }
 
 .hero h1 {
-  font-family: 'Instrument Serif', Georgia, serif;
+  font-family: 'Instrument Serif', 'Playfair Display', Georgia, serif;
   font-weight: 400;
   font-size: clamp(46px, 8.5vw, 82px);
   line-height: 1.02;
@@ -241,7 +241,7 @@ body {
 }
 
 .letter h2 {
-  font-family: 'Instrument Serif', Georgia, serif;
+  font-family: 'Instrument Serif', 'Playfair Display', Georgia, serif;
   font-weight: 400;
   font-size: 34px;
   color: var(--ink-3);
@@ -321,7 +321,7 @@ body {
 }
 
 .section-title {
-  font-family: 'Instrument Serif', Georgia, serif;
+  font-family: 'Instrument Serif', 'Playfair Display', Georgia, serif;
   font-weight: 400;
   font-size: clamp(30px, 4.6vw, 44px);
   text-align: center;
@@ -364,7 +364,7 @@ body {
   margin: 0 0 10px;
 }
 .stat-value {
-  font-family: 'Instrument Serif', Georgia, serif;
+  font-family: 'Instrument Serif', 'Playfair Display', Georgia, serif;
   font-size: 40px;
   line-height: 1;
   margin: 0 0 8px;
@@ -461,7 +461,7 @@ body {
 .alert-copy { position: relative; }
 .alert-copy .eyebrow { text-align: left; color: rgba(255,255,255,.55); }
 .alert-copy h2 {
-  font-family: 'Instrument Serif', Georgia, serif;
+  font-family: 'Instrument Serif', 'Playfair Display', Georgia, serif;
   font-weight: 400;
   font-size: clamp(30px, 4.4vw, 42px);
   margin: 0 0 20px;
@@ -503,7 +503,7 @@ body {
   padding: 30px 28px;
 }
 .alert-quote p {
-  font-family: 'Instrument Serif', Georgia, serif;
+  font-family: 'Instrument Serif', 'Playfair Display', Georgia, serif;
   font-size: 22px;
   line-height: 1.4;
   margin: 0 0 14px;

@@ -1,20 +1,20 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="ru">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Spaceweather.com — redesign concept</title>
-    <meta name="description" content="Unofficial redesign concept of spaceweather.com. News and information about the Sun–Earth environment." />
+    <title>Spaceweather.com — редизайн-концепт</title>
+    <meta name="description" content="Неофициальный редизайн-концепт spaceweather.com. Новости и данные о космической погоде." />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600&family=Caveat:wght@500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Playfair+Display:wght@400;500&family=Inter:wght@400;500;600&family=Caveat:wght@500&display=swap"
       rel="stylesheet"
     />
     <link rel="stylesheet" href="./style.css" />
   </head>
   <body>
-    <a href="#main" class="skip">Skip to content</a>
+    <a href="#main" class="skip">Перейти к контенту</a>
 
     <div class="sky">
       <div class="stars" aria-hidden="true"></div>
@@ -30,12 +30,12 @@
           <span>spaceweather<i>.com</i></span>
         </a>
         <nav class="nav-links">
-          <a href="#conditions">Conditions</a>
-          <a href="#stories">This week</a>
-          <a href="#alerts">Alerts</a>
-          <a href="#letter">About</a>
+          <a href="#conditions">Обстановка</a>
+          <a href="#stories">Эта неделя</a>
+          <a href="#alerts">Оповещения</a>
+          <a href="#letter">О сайте</a>
         </nav>
-        <a href="#alerts" class="pill pill-ghost nav-cta">Subscribe</a>
+        <a href="#alerts" class="pill pill-ghost nav-cta">Подписаться</a>
       </header>
 
       <main id="main">
@@ -56,20 +56,20 @@
 
           <a class="badge" href="#stories">
             <span class="badge-dot" aria-hidden="true"></span>
-            G2 geomagnetic storm predicted — July 3
+            Прогноз: магнитная буря G2 — 3 июля
             <span aria-hidden="true">›</span>
           </a>
 
-          <h1>The sky is full<br />of surprises.</h1>
+          <h1>Небо полно<br />сюрпризов.</h1>
 
           <p class="lead">
-            News and information about the Sun–Earth environment. Solar flares, auroras,
-            noctilucent clouds and meteor showers — observed daily, explained plainly.
+            Новости и данные о космической погоде: солнечные вспышки, полярные сияния,
+            серебристые облака и метеорные потоки — ежедневно и человеческим языком.
           </p>
 
           <div class="hero-cta">
-            <a class="pill pill-solid" href="#alerts">Get aurora alerts</a>
-            <a class="pill pill-ghost" href="#conditions">Today's conditions</a>
+            <a class="pill pill-solid" href="#alerts">Оповещения о сияниях</a>
+            <a class="pill pill-ghost" href="#conditions">Обстановка сейчас</a>
           </div>
 
           <svg class="chevron" width="26" height="14" viewBox="0 0 26 14" fill="none" aria-hidden="true">
@@ -81,92 +81,91 @@
         <section class="letter-zone" id="letter">
           <figure class="polaroid polaroid-left" aria-hidden="true">
             <div class="polaroid-img aurora-img"></div>
-            <figcaption>aurora over Tromsø</figcaption>
+            <figcaption>сияние над Тромсё</figcaption>
           </figure>
 
           <article class="letter">
-            <h2>An AI-free zone.</h2>
+            <h2>Зона, свободная от ИИ.</h2>
             <p>
-              Spaceweather.com is written by a real human being — and it has been for
-              thirty years. Every forecast on this page comes from a person who walked
-              outside, looked up, and checked the data twice.
+              Spaceweather.com тридцать лет пишет живой человек. Каждый прогноз на этой
+              странице — от того, кто вышел на улицу, поднял голову и дважды сверил данные.
             </p>
             <p>
-              We report the sky for awe, not engagement. No feeds designed to keep you
-              scrolling, no headlines louder than the aurora itself. When something is
-              about to happen over your head, we tell you — plainly, and in time to see it.
+              Мы рассказываем о небе ради восторга, а не вовлечённости. Никаких лент,
+              придуманных, чтобы вы листали, и заголовков громче самого сияния. Когда над
+              вашей головой вот-вот что-то произойдёт, мы скажем об этом прямо — и вовремя.
             </p>
             <p>
-              If you find a mistake here, rest assured: it was made by a real human being.
+              А если найдёте здесь ошибку — будьте уверены: её допустил живой человек.
             </p>
-            <p class="signature" aria-label="Signed, Dr. Tony Phillips">Tony Phillips</p>
-            <p class="signature-title">Dr. Tony Phillips, editor since 1997</p>
+            <p class="signature" aria-label="Подпись: доктор Тони Филлипс">Tony Phillips</p>
+            <p class="signature-title">Доктор Тони Филлипс, редактор с 1997 года</p>
           </article>
 
           <figure class="polaroid polaroid-right" aria-hidden="true">
             <div class="polaroid-img noctilucent-img"></div>
-            <figcaption>noctilucent clouds, July 1</figcaption>
+            <figcaption>серебристые облака, 1 июля</figcaption>
           </figure>
         </section>
 
         <!-- CONDITIONS -->
         <section class="conditions" id="conditions">
-          <p class="eyebrow">Current conditions · 02 Jul 2026</p>
-          <h2 class="section-title">Right now, above you</h2>
+          <p class="eyebrow">Текущая обстановка · 02.07.2026</p>
+          <h2 class="section-title">Прямо сейчас над вами</h2>
           <div class="stat-grid">
             <div class="stat">
-              <p class="stat-label">Solar wind</p>
-              <p class="stat-value">420 <span>km/s</span></p>
-              <p class="stat-note">density 8.1 protons/cm³</p>
+              <p class="stat-label">Солнечный ветер</p>
+              <p class="stat-value">420 <span>км/с</span></p>
+              <p class="stat-note">плотность 8,1 протона/см³</p>
             </div>
             <div class="stat">
-              <p class="stat-label">Sunspot number</p>
+              <p class="stat-label">Число солнечных пятен</p>
               <p class="stat-value">146</p>
-              <p class="stat-note">two 'beta-gamma-delta' groups</p>
+              <p class="stat-note">две группы класса «бета-гамма-дельта»</p>
             </div>
             <div class="stat">
-              <p class="stat-label">X-ray solar flares</p>
+              <p class="stat-label">Рентгеновские вспышки</p>
               <p class="stat-value">C8</p>
-              <p class="stat-note">6-hr max, sunspot 8954</p>
+              <p class="stat-note">максимум за 6 ч, пятно 8954</p>
             </div>
             <div class="stat">
-              <p class="stat-label">Planetary K-index</p>
-              <p class="stat-value">1.0 <span>quiet</span></p>
-              <p class="stat-note">24-hr max Kp 3.0</p>
+              <p class="stat-label">Планетарный Kp-индекс</p>
+              <p class="stat-value">1,0 <span>спокойно</span></p>
+              <p class="stat-note">максимум за сутки — Kp 3,0</p>
             </div>
           </div>
         </section>
 
         <!-- STORIES -->
         <section class="stories" id="stories">
-          <p class="eyebrow">This week in space</p>
-          <h2 class="section-title">Three reasons to look up</h2>
+          <p class="eyebrow">Эта неделя в космосе</p>
+          <h2 class="section-title">Три причины поднять голову</h2>
           <div class="story-grid">
             <article class="story">
               <div class="story-art art-storm" aria-hidden="true"></div>
-              <h3>A storm is coming — the good kind</h3>
+              <h3>Надвигается буря — из приятных</h3>
               <p>
-                NOAA analysts say a G2-class geomagnetic storm is possible on July 3rd,
-                when a CME from the June 30th X-flare reaches Earth. Aurora visibility
-                could stretch to mid-latitudes in the dark hours around midnight.
+                Аналитики NOAA ожидают магнитную бурю класса G2 3 июля, когда корональный
+                выброс от X-вспышки 30 июня достигнет Земли. В тёмные часы около полуночи
+                сияния могут спуститься до средних широт.
               </p>
             </article>
             <article class="story">
               <div class="story-art art-noctilucent" aria-hidden="true"></div>
-              <h3>Night-shining clouds over Europe</h3>
+              <h3>Серебристые облака над Европой</h3>
               <p>
-                Sky watchers report natural noctilucent clouds — summertime plumes of
-                water vapor that crystallize around meteor dust at the edge of space,
-                glowing electric blue long after sunset.
+                Наблюдатели сообщают о естественных серебристых облаках — летних перьях
+                водяного пара, кристаллизующегося на метеорной пыли у границы космоса.
+                Они светятся электрик-синим ещё долго после заката.
               </p>
             </article>
             <article class="story">
               <div class="story-art art-rocket" aria-hidden="true"></div>
-              <h3>A rocket drew on the sky</h3>
+              <h3>Ракета расписалась на небе</h3>
               <p>
-                A Falcon 9 out of Vandenberg left an icy exhaust spiral visible 500 miles
-                away, and delivered 24 more Starlink satellites — bringing the total in
-                orbit to 10,746.
+                Falcon 9 с базы Ванденберг оставил ледяную спираль выхлопа, видимую за
+                800 километров, и вывел ещё 24 спутника Starlink — теперь их на орбите
+                10 746.
               </p>
             </article>
           </div>
@@ -176,29 +175,29 @@
         <section class="alerts" id="alerts">
           <div class="alert-card">
             <div class="alert-copy">
-              <p class="eyebrow">Backyard astronomy alerts</p>
-              <h2>We will tell you when to look.</h2>
+              <p class="eyebrow">Оповещения для дворовой астрономии</p>
+              <h2>Мы скажем, когда смотреть.</h2>
               <ul>
-                <li>Real-time SMS when auroras, planetary conjunctions or meteor showers begin</li>
-                <li>Space-station flybys visible from your backyard, timed to the minute</li>
-                <li>Written and checked by humans — never auto-generated</li>
+                <li>SMS в реальном времени, когда начинаются сияния, соединения планет или метеорные потоки</li>
+                <li>Пролёты космической станции над вашим двором — с точностью до минуты</li>
+                <li>Пишут и проверяют люди — ничего сгенерированного</li>
               </ul>
               <div class="alert-cta">
-                <a class="pill pill-solid" href="#">Get alerts — $49.95/year</a>
-                <p class="alert-offer">introductory offer: first year 50% off</p>
+                <a class="pill pill-solid" href="#">Подписаться — $49.95 в год</a>
+                <p class="alert-offer">стартовое предложение: первый год — со скидкой 50%</p>
               </div>
             </div>
             <blockquote class="alert-quote">
-              <p>“Peaks of my week now happen at 2 a.m., in the yard, in my pajamas.”</p>
-              <footer>— a subscriber since 2019</footer>
+              <p>«Лучшие моменты недели теперь случаются в два часа ночи, во дворе, в пижаме.»</p>
+              <footer>— подписчик с 2019 года</footer>
             </blockquote>
           </div>
         </section>
       </main>
 
       <footer class="footer">
-        <p>Unofficial redesign concept for portfolio purposes · Original: <a href="https://spaceweather.com" rel="noopener" target="_blank">spaceweather.com</a></p>
-        <p>Design &amp; build — <a href="../">Bogdan Maslakov</a>, 2026</p>
+        <p>Неофициальный редизайн-концепт для портфолио · Оригинал: <a href="https://spaceweather.com" rel="noopener" target="_blank">spaceweather.com</a></p>
+        <p>Дизайн и вёрстка — <a href="../">Богдан Маслаков</a>, 2026</p>
       </footer>
     </div>
   </body>
